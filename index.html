@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+    <head>
+        <meta charSet="utf-8"/>
+        <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+        <title>PrecisionLib240</title>
+        <link rel="icon" href="img/favicon.png" type="image/x-icon">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body class="min-h-screen bg-background font-sans antialiased __variable_39b9c5">
+        <div data-overlay-container="true">
+            <script>
+                !function() {
+                    try {
+                        var d = document.documentElement
+                          , c = d.classList;
+                        c.remove('light', 'dark');
+                        var e = localStorage.getItem('theme');
+                        if ('system' === e || (!e && false)) {
+                            var t = '(prefers-color-scheme: dark)'
+                              , m = window.matchMedia(t);
+                            if (m.media !== t || m.matches) {
+                                d.style.colorScheme = 'dark';
+                                c.add('dark')
+                            } else {
+                                d.style.colorScheme = 'light';
+                                c.add('light')
+                            }
+                        } else if (e) {
+                            c.add(e || '')
+                        } else {
+                            c.add('dark')
+                        }
+                        if (e === 'light' || e === 'dark' || !e)
+                            d.style.colorScheme = e || 'dark'
+                    } catch (e) {}
+                }()
+            </script>
+            <div class="relative flex flex-col" id="app-container">
+                <nav class="flex z-40 w-full h-auto items-center justify-center data-[menu-open=true]:border-none sticky top-0 inset-x-0 backdrop-blur-lg data-[menu-open=true]:backdrop-blur-xl backdrop-saturate-150 bg-background/70" style="--navbar-height:4rem">
+                    <header class="z-40 flex px-6 gap-4 w-full flex-row relative flex-nowrap items-center justify-between h-[var(--navbar-height)] max-w-[1280px]">
+                        <ul class="flex gap-4 h-full flex-row flex-nowrap items-center data-[justify=start]:justify-start data-[justify=start]:flex-grow data-[justify=start]:basis-0 data-[justify=center]:justify-center data-[justify=end]:justify-end data-[justify=end]:flex-grow data-[justify=end]:basis-0 basis-1/5 sm:basis-full" data-justify="start">
+                            <li class="flex basis-0 flex-row flex-grow flex-nowrap justify-start bg-transparent items-center no-underline text-medium whitespace-nowrap box-border gap-3 max-w-fit">
+                                <a aria-label="Home" class="flex justify-start items-center gap-2 tap-highlight-transparent transition-opacity active:opacity-50" href="/">
+                                    <div><img id="logo" style="height: 80px; width: 1200px;" src="img/logo.png" alt=""></div>
+                                </a>
+                                <div class="w-[74px]"></div>
+                            </li>
+                            <ul id="removethis" class="hidden lg:flex gap-4 justify-start items-center">
+                                <li class="text-medium whitespace-nowrap box-border list-none data-[active=true]:font-semibold">
+                                    <a class="relative inline-flex items-center tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 text-medium text-foreground no-underline hover:opacity-80 active:opacity-disabled transition-opacity data-[active=true]:text-primary" color="foreground" data-active="false" href="documentation.pdf">Docs</a>
+                                </li>
+                                <li class="text-medium whitespace-nowrap box-border list-none data-[active=true]:font-semibold">
+                                    <a class="relative inline-flex items-center tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 text-medium text-foreground no-underline hover:opacity-80 active:opacity-disabled transition-opacity data-[active=true]:text-primary" color="foreground" data-active="false" href="#getstart">Get Started</a>
+                                </li>
+                                <li class="text-medium whitespace-nowrap box-border list-none data-[active=true]:font-semibold">
+                                    <a class="relative inline-flex items-center tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 text-medium text-foreground no-underline hover:opacity-80 active:opacity-disabled transition-opacity data-[active=true]:text-primary" color="foreground" data-active="false" href="#refer">Reference</a>
+                                </li>
+                                <li class="text-medium whitespace-nowrap box-border list-none data-[active=true]:font-semibold">
+                                    <a class="relative inline-flex items-center tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 text-medium text-foreground no-underline hover:opacity-80 active:opacity-disabled transition-opacity data-[active=true]:text-primary" color="foreground" data-active="false" href="https://harleen001.github.io/portfolio1/">Portfolio</a>
+                                </li>
+                                <li class="text-medium whitespace-nowrap box-border list-none data-[active=true]:font-semibold">
+                                    <a class="relative max-w-fit inline-flex items-center justify-between box-border whitespace-nowrap border-medium text-foreground bg-transparent px-1 h-7 text-small rounded-full hover:bg-default-100 border-default-200/80 dark:border-default-100/80 transition-colors cursor-pointer" href="#">
+                                        <span class="w-2 h-2 ml-1 rounded-full bg-secondary"></span>
+                                        <span class="flex-1 text-inherit font-normal px-2">
+                                            New components Added <span aria-label="party emoji" role="img">🎉</span>
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </ul>
+                        <ul class="h-full flex-row flex-nowrap items-center data-[justify=start]:justify-start data-[justify=start]:flex-grow data-[justify=start]:basis-0 data-[justify=center]:justify-center data-[justify=end]:justify-end data-[justify=end]:flex-grow data-[justify=end]:basis-0 flex w-full gap-2 sm:hidden" data-justify="end">
+                            <li class="text-medium whitespace-nowrap box-border list-none data-[active=true]:font-semibold flex h-full items-center">
+                                <a class="relative inline-flex items-center tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 text-medium text-primary no-underline hover:opacity-80 active:opacity-disabled transition-opacity p-1" aria-label="Github" tabindex="0" role="link" href="https://github.com/nextui-org/nextui" rel="noopener noreferrer" target="_blank">
+                                   
+                                </a>
+                            </li>
+                            <li class="text-medium whitespace-nowrap box-border list-none data-[active=true]:font-semibold flex h-full items-center">
+                                <label aria-label="Switch to light mode" class="group relative max-w-fit inline-flex items-center justify-start touch-none tap-highlight-transparent p-1 w-8 h-8 transition-opacity hover:opacity-80 cursor-pointer">
+                                    <div style="border:0;clip:rect(0 0 0 0);clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;white-space:nowrap">
+                                        <input aria-labelledby=":Raapla:" type="checkbox" role="switch" value=""/>
+                                    </div>
+                                    <div aria-hidden="true" class="relative flex-shrink-0 overflow-hidden outline-none group-data-[focus-visible=true]:z-10 group-data-[focus-visible=true]:ring-2 group-data-[focus-visible=true]:ring-focus group-data-[focus-visible=true]:ring-offset-2 group-data-[focus-visible=true]:ring-offset-background group-data-[selected=true]:text-primary-foreground transition-background w-auto h-auto bg-transparent rounded-lg flex items-center justify-center group-data-[selected=true]:bg-transparent !text-default-600 dark:!text-default-500 pt-px px-0 mx-0">
+                                       
+                                    </div>
+                                </label>
+                            </li>
+                            <li class="text-medium whitespace-nowrap box-border list-none data-[active=true]:font-semibold flex h-full items-center">
+                                <button class="transition-opacity p-1 hover:opacity-80 rounded-full cursor-pointer outline-none outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2" data-focus-visible="false">
+                                  
+                                </button>
+                            </li>
+                            <li class="text-medium whitespace-nowrap box-border list-none data-[active=true]:font-semibold w-10 h-full">
+                                
+                            </li>
+                        </ul>
+                        <ul class="gap-4 h-full flex-row flex-nowrap items-center data-[justify=start]:justify-start data-[justify=start]:flex-grow data-[justify=start]:basis-0 data-[justify=center]:justify-center data-[justify=end]:justify-end data-[justify=end]:flex-grow data-[justify=end]:basis-0 hidden sm:flex basis-1/5 sm:basis-full" data-justify="end">
+                            <li class="text-medium whitespace-nowrap box-border list-none data-[active=true]:font-semibold hidden sm:flex">
+                     
+
+
+                                <a class="tap-highlight-transparent no-underline hover:opacity-80 active:opacity-disabled transition-opacity z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap subpixel-antialiased overflow-hidden tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-unit-4 min-w-unit-20 h-unit-10 gap-unit-2 rounded-medium [&amp;&gt;svg]:max-w-[theme(spacing.unit-8)] data-[pressed=true]:scale-[0.97] transition-transform-colors motion-reduce:transition-none group text-sm font-normal text-default-600 bg-default-400/20 dark:bg-default-500/20" tabindex="0" role="button" href="#inside" target="_blank" rel="noopener noreferrer">
+                   
+                                   Write Better Code
+                               </a>
+
+
+
+
+
+
+
+                            </li>
+                            <li class="text-medium whitespace-nowrap box-border list-none data-[active=true]:font-semibold hidden md:flex">
+                                <a class="tap-highlight-transparent no-underline hover:opacity-80 active:opacity-disabled transition-opacity z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap subpixel-antialiased overflow-hidden tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-unit-4 min-w-unit-20 h-unit-10 gap-unit-2 rounded-medium [&amp;&gt;svg]:max-w-[theme(spacing.unit-8)] data-[pressed=true]:scale-[0.97] transition-transform-colors motion-reduce:transition-none group text-sm font-normal text-default-600 bg-default-400/20 dark:bg-default-500/20" tabindex="0" role="button" href="https://github.com/harleen001" target="_blank" rel="noopener noreferrer">
+                                     <svg class=" ms-2 w-4 h-4 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+    <path fill-rule="evenodd" d="M10 .333A9.911 9.911 0 0 0 6.866 19.65c.5.092.678-.215.678-.477 0-.237-.01-1.017-.014-1.845-2.757.6-3.338-1.169-3.338-1.169a2.627 2.627 0 0 0-1.1-1.451c-.9-.615.07-.6.07-.6a2.084 2.084 0 0 1 1.518 1.021 2.11 2.11 0 0 0 2.884.823c.044-.503.268-.973.63-1.325-2.2-.25-4.516-1.1-4.516-4.9A3.832 3.832 0 0 1 4.7 7.068a3.56 3.56 0 0 1 .095-2.623s.832-.266 2.726 1.016a9.409 9.409 0 0 1 4.962 0c1.89-1.282 2.717-1.016 2.717-1.016.366.83.402 1.768.1 2.623a3.827 3.827 0 0 1 1.02 2.659c0 3.807-2.319 4.644-4.525 4.889a2.366 2.366 0 0 1 .673 1.834c0 1.326-.012 2.394-.012 2.72 0 .263.18.572.681.475A9.911 9.911 0 0 0 10 .333Z" clip-rule="evenodd"/>
+    </svg>
+                                    Github
+                                </a>
+                            </li>
+                          
+                        </ul>
+                    </header>
+                </nav>
+                <main class="container mx-auto max-w-7xl px-6 flex-grow">
+                    <section class="flex flex-col items-center justify-center">
+                        <section class="flex relative overflow-hidden lg:overflow-visible w-full flex-nowrap justify-between items-center h-[calc(100vh_-_64px)] 2xl:h-[calc(84vh_-_64px)]">
+                            <div class="flex relative z-20 flex-col gap-6 w-full lg:w-1/2 xl:mt-10">
+                                <div class="text-center leading-8 md:leading-10 md:text-left">
+                                    <div class="inline-block">
+                                        <h1 class="tracking-tight inline font-semibold text-[2.5rem] lg:text-5xl">Write</h1>
+                                        <h1 class="tracking-tight inline font-semibold from-[#FF1CF7] to-[#b249f8] text-[2.5rem] lg:text-5xl bg-clip-text text-transparent bg-gradient-to-b">better </h1>
+                                    </div>
+                                    <h1 class="tracking-tight inline font-semibold text-[2.5rem] lg:text-5xl">codes regardless of your coding experience.</h1>
+                                </div>
+                                <h2 class="w-full md:w-1/2 my-2 text-lg lg:text-xl font-normal text-default-500 block max-w-full !w-full text-center md:text-left">Effortless, powerful and modern C++ library.</h2>
+                                <div class="flex flex-col md:flex-row items-center gap-4">
+                                    <a class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-unit-6 min-w-unit-24 h-unit-12 text-medium gap-unit-3 rounded-full [&amp;&gt;svg]:max-w-[theme(spacing.unit-8)] data-[pressed=true]:scale-[0.97] transition-transform-colors motion-reduce:transition-none bg-primary text-primary-foreground w-full md:w-auto" role="button" tabindex="0" href="https://drive.google.com/drive/folders/1EYft5EArdYs7GhHWcy8XJiIDKzwAFxbU?usp=sharing">
+                                        Download Now
+                                        <svg aria-hidden="true" fill="none" focusable="false" height="1em" role="presentation" viewBox="0 0 24 24" width="1em" class="group-data-[hover=true]:translate-x-0.5 outline-none transition-transform" tabindex="-1">
+                                            <path d="M16.835 6.91821L23.9166 13.9999L16.835 21.0815" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"></path>
+                                            <path d="M4.08325 14H23.7183" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"></path>
+                                        </svg>
+                                    </a>
+                                    <a class="tap-highlight-transparent no-underline hover:opacity-80 active:opacity-disabled transition-opacity z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 border-medium px-unit-6 min-w-unit-24 h-unit-12 text-medium gap-unit-3 rounded-full [&amp;&gt;svg]:max-w-[theme(spacing.unit-8)] data-[pressed=true]:scale-[0.97] transition-transform-colors motion-reduce:transition-none bg-transparent border-default text-foreground w-full md:w-auto" tabindex="0" role="button" href="https://github.com/harleen001/PrecisionLib240" target="_blank" rel="noopener noreferrer">
+                                        <svg height="24" viewBox="0 0 24 24" width="24" aria-hidden="true" focusable="false" tabindex="-1">
+                                            <path clip-rule="evenodd" d="M12.026 2c-5.509 0-9.974 4.465-9.974 9.974 0 4.406 2.857 8.145 6.821 9.465.499.09.679-.217.679-.481 0-.237-.008-.865-.011-1.696-2.775.602-3.361-1.338-3.361-1.338-.452-1.152-1.107-1.459-1.107-1.459-.905-.619.069-.605.069-.605 1.002.07 1.527 1.028 1.527 1.028.89 1.524 2.336 1.084 2.902.829.091-.645.351-1.085.635-1.334-2.214-.251-4.542-1.107-4.542-4.93 0-1.087.389-1.979 1.024-2.675-.101-.253-.446-1.268.099-2.64 0 0 .837-.269 2.742 1.021a9.582 9.582 0 0 1 2.496-.336 9.554 9.554 0 0 1 2.496.336c1.906-1.291 2.742-1.021 2.742-1.021.545 1.372.203 2.387.099 2.64.64.696 1.024 1.587 1.024 2.675 0 3.833-2.33 4.675-4.552 4.922.355.308.675.916.675 1.846 0 1.334-.012 2.41-.012 2.737 0 .267.178.577.687.479C19.146 20.115 22 16.379 22 11.974 22 6.465 17.535 2 12.026 2z" fill="currentColor" fill-rule="evenodd"></path>
+                                        </svg>
+                                        Github
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="hidden lg:flex flex-col relative z-20 w-1/2">
+                                <label class="group max-w-fit inline-flex items-center justify-start cursor-pointer touch-none tap-highlight-transparent absolute -top-[220px] -right-[40px] animate-[levitate_13s_ease_infinite_1s_reverse]">
+                                    <div style="border:0;clip:rect(0 0 0 0);clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;white-space:nowrap">
+                                        <input aria-labelledby=":R31lkpla:" type="checkbox" role="switch" value=""/>
+                                    </div>
+                                   
+                                       
+                                </label>
+                                
+                              
+                               
+                                <div class="flex flex-col overflow-hidden height-auto text-foreground box-border bg-content1 outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large transition-transform-background motion-reduce:transition-none max-w-[300px] absolute left-[80px] -top-[80px] animate-[levitate_16s_ease_infinite] border-none" tabindex="-1">
+                                    <div class="flex p-3 z-10 w-full items-center shrink-0 overflow-inherit color-inherit subpixel-antialiased rounded-t-large justify-between">
+                                        <div class="flex gap-5">
+                                            <span tabindex="-1" class="flex relative justify-center items-center box-border overflow-hidden align-middle z-10 outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 w-10 h-10 text-tiny bg-default text-default-foreground rounded-full ring-2 ring-offset-2 ring-offset-background dark:ring-offset-background-dark ring-default">
+                                                <img alt="Zoey Lang" loading="lazy" width="40" height="40" decoding="async" data-nimg="1" class="flex object-cover w-full h-full transition-opacity !duration-500 opacity-0 data-[loaded=true]:opacity-100" style="color:transparent" srcSet="/_next/image?url=%2Favatars%2Favatar-1.webp&amp;w=48&amp;q=75 1x, /_next/image?url=%2Favatars%2Favatar-1.webp&amp;w=96&amp;q=75 2x" src="/_next/image?url=%2Favatars%2Favatar-1.webp&amp;w=96&amp;q=75"/>
+                                            </span>
+                                            <div class="flex flex-col items-start justify-center">
+                                                <h4 class="text-sm font-semibold leading-none text-default-600">Harleen Singh</h4>
+                                                <h5 class="text-sm tracking-tight text-default-400">@iharleenjohal</h5>
+                                            </div>
+                                        </div>
+                                        <button class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-unit-3 min-w-unit-16 h-unit-8 text-tiny gap-unit-2 rounded-full [&amp;&gt;svg]:max-w-[theme(spacing.unit-8)] data-[pressed=true]:scale-[0.97] transition-transform-colors motion-reduce:transition-none bg-primary text-primary-foreground" type="button"><a href="https://www.instagram.com/iharleenjohal/">Follow</a></button>
+                                    </div>
+                                    <div class="relative flex w-full p-5 flex-auto flex-col place-content-inherit align-items-inherit h-auto break-words text-left overflow-y-auto subpixel-antialiased px-3 py-0">
+                                        <p class="text-sm pl-px text-default-400">
+                                            university grad. 🎓 designer and gamer 
+                                        </p>
+                                    </div>
+                                    <div class="p-3 h-auto flex w-full items-center overflow-hidden color-inherit subpixel-antialiased rounded-b-large gap-3">
+                                        <div class="flex gap-1">
+                                            <p class="font-semibold text-default-400 text-sm">230</p>
+                                            <p class=" text-default-400 text-sm">Following</p>
+                                        </div>
+                                        <div class="flex gap-1">
+                                            <p class="font-semibold text-default-400 text-sm">230</p>
+                                            <p class="text-default-400 text-sm">Followers</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                             
+                               
+                                
+                           
+                        </section>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                            <div class="flex flex-col relative overflow-hidden height-auto text-foreground box-border outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large transition-transform-background motion-reduce:transition-none border-transparent bg-white/5 dark:bg-default-400/10 backdrop-blur-lg backdrop-saturate-[1.8]" tabindex="-1">
+                                <div class="flex p-3 z-10 w-full justify-start items-center shrink-0 overflow-inherit color-inherit subpixel-antialiased rounded-t-large gap-2 pb-0">
+                                    <div class="flex justify-center p-2 rounded-full items-center bg-secondary-100/80 text-pink-500">
+                                        
+                                    </div>
+                                    <p class="text-base font-semibold">Robustness</p>
+                                </div>
+                                <div class="relative flex w-full p-5 flex-auto flex-col place-content-inherit align-items-inherit h-auto break-words text-left overflow-y-auto subpixel-antialiased">
+                                    <p class="font-normal text-base text-default-500"> Ensures stability and reliability in code execution.</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col relative overflow-hidden height-auto text-foreground box-border outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large transition-transform-background motion-reduce:transition-none border-transparent bg-white/5 dark:bg-default-400/10 backdrop-blur-lg backdrop-saturate-[1.8]" tabindex="-1">
+                                <div class="flex p-3 z-10 w-full justify-start items-center shrink-0 overflow-inherit color-inherit subpixel-antialiased rounded-t-large gap-2 pb-0">
+                                    <div class="flex justify-center p-2 rounded-full items-center bg-secondary-100/80 text-pink-500">
+                                       
+                                    </div>
+                                    <p class="text-base font-semibold">Scalability</p>
+                                </div>
+                                <div class="relative flex w-full p-5 flex-auto flex-col place-content-inherit align-items-inherit h-auto break-words text-left overflow-y-auto subpixel-antialiased">
+                                    <p class="font-normal text-base text-default-500">Facilitates seamless expansion and adaptation to varying project </p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col relative overflow-hidden height-auto text-foreground box-border outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large transition-transform-background motion-reduce:transition-none border-transparent bg-white/5 dark:bg-default-400/10 backdrop-blur-lg backdrop-saturate-[1.8]" tabindex="-1">
+                                <div class="flex p-3 z-10 w-full justify-start items-center shrink-0 overflow-inherit color-inherit subpixel-antialiased rounded-t-large gap-2 pb-0">
+                                    <div class="flex justify-center p-2 rounded-full items-center bg-secondary-100/80 text-pink-500">
+                                       
+                                    </div>
+                                    <p class="text-base font-semibold">Modularity</p>
+                                </div>
+                                <div class="relative flex w-full p-5 flex-auto flex-col place-content-inherit align-items-inherit h-auto break-words text-left overflow-y-auto subpixel-antialiased">
+                                    <p class="font-normal text-base text-default-500">Promotes efficient code organization and maintenance.</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col relative overflow-hidden height-auto text-foreground box-border outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large transition-transform-background motion-reduce:transition-none border-transparent bg-white/5 dark:bg-default-400/10 backdrop-blur-lg backdrop-saturate-[1.8]" tabindex="-1">
+                                <div class="flex p-3 z-10 w-full justify-start items-center shrink-0 overflow-inherit color-inherit subpixel-antialiased rounded-t-large gap-2 pb-0">
+                                    <div class="flex justify-center p-2 rounded-full items-center bg-secondary-100/80 text-pink-500">
+                                       
+                                    </div>
+                                    <p class="text-base font-semibold">Performance</p>
+                                </div>
+                                <div class="relative flex w-full p-5 flex-auto flex-col place-content-inherit align-items-inherit h-auto break-words text-left overflow-y-auto subpixel-antialiased">
+                                    <p class="font-normal text-base text-default-500">N Enhances code efficiency and execution speed.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <section class="relative z-10 flex flex-col gap-2 w-full mt-24 lg:mt-56">
+                            <div class="flex flex-col gap-8">
+                                <div>
+                                    <div class="flex flex-col gap-2 items-start justify-center w-full">
+                                        <h1 id="getstart" class="tracking-tight inline font-semibold text-4xl lg:text-6xl">Apply your own</h1>
+                                        <div>
+                                            <h1 class="tracking-tight inline font-semibold from-[#5EA2EF] to-[#0072F5] text-4xl lg:text-6xl bg-clip-text text-transparent bg-gradient-to-b">built-in </h1>
+                                            <h1 class="tracking-tight inline font-semibold text-4xl lg:text-6xl">functions</h1>
+                                        </div>
+                                    </div>
+                                    <p class="w-full md:w-1/2 my-2 text-lg lg:text-xl font-normal text-default-500 block max-w-full">PrecisionLib240 provides a wide range of functions that allows you to boost your productivity, simplify complex operations, and elevate your coding standards.</p>
+                                </div>
+                                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                                    <div class="flex flex-col gap-6 ">
+                                        <div data-slot="base" class="inline-flex w-full" aria-label="Custom themes tabs">
+                                            <div data-slot="tabList" class="flex p-1 h-fit items-center flex-nowrap overflow-x-scroll scrollbar-hide bg-transparent dark:bg-transparent rounded-medium w-full justify-start gap-8" id="react-aria-:R1cjlkpla:" aria-label="Custom themes tabs" role="tablist" aria-orientation="horizontal">
+                                                <button data-slot="tab" tabindex="-1" data-key="nextui" id="react-aria-:R1cjlkpla:-tab-nextui" aria-selected="false" role="tab" class="z-0 py-1 flex group relative justify-center items-center cursor-pointer tap-highlight-transparent data-[disabled=true]:cursor-not-allowed data-[disabled=true]:opacity-30 data-[hover-unselected=true]:opacity-disabled outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 text-small rounded-small transition-none data-[selected=true]:text-default-foreground px-0 w-fit h-auto data-[selected=true]:bg-transparent" type="button">
+                                                    <div class="relative z-10 whitespace-nowrap transition-none group-data-[selected=true]:text-default-foreground text-default-400 text-base" data-slot="tabContent">
+                                                        <div class="flex flex-col justify-center items-center gap-2">
+                                                            <svg class="data-[auto=true]:sm:hidden block text-foreground text-default-400 group-data-[selected=true]:text-primary" fill="currentColor" height="44" viewBox="0 0 43 43" width="44">
+                                                                <path d="M32 43H11a10.928 10.928 0 01-7.778-3.222A10.928 10.928 0 010 32V11a10.928 10.928 0 013.222-7.778A10.928 10.928 0 0111 0h21a10.929 10.929 0 017.779 3.222A10.927 10.927 0 0143 11v21a10.927 10.927 0 01-3.222 7.778A10.929 10.929 0 0132 43zM11.314 12.293v12.033a6.35 6.35 0 00.87 3.31 6.243 6.243 0 002.422 2.3 7.458 7.458 0 003.595.843 7.474 7.474 0 003.6-.839 6.2 6.2 0 002.418-2.3 6.381 6.381 0 00.869-3.315V12.292h-1.659V24.21a5.149 5.149 0 01-.643 2.578 4.6 4.6 0 01-1.824 1.779 5.668 5.668 0 01-2.759.648 5.646 5.646 0 01-2.756-.648 4.64 4.64 0 01-1.823-1.779 5.116 5.116 0 01-.648-2.578V12.292zm18.6 0v18.175h1.66V12.293z"></path>
+                                                            </svg>
+                                                            <p class="group-data-[selected=true]:text-primary">Modern</p>
+                                                        </div>
+                                                    </div>
+                                                </button>
+                                                <button data-slot="tab" tabindex="-1" data-key="modern" id="react-aria-:R1cjlkpla:-tab-modern" aria-selected="false" role="tab" class="z-0 py-1 flex group relative justify-center items-center cursor-pointer tap-highlight-transparent data-[disabled=true]:cursor-not-allowed data-[disabled=true]:opacity-30 data-[hover-unselected=true]:opacity-disabled outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 text-small rounded-small transition-none data-[selected=true]:text-default-foreground px-0 w-fit h-auto data-[selected=true]:bg-transparent" type="button">
+                                                    <div class="relative z-10 whitespace-nowrap transition-none group-data-[selected=true]:text-default-foreground text-default-400 text-base" data-slot="tabContent">
+                                                        <div class="flex flex-col justify-center items-center gap-2">
+                                                            <svg aria-hidden="true" fill="none" focusable="false" height="44" role="presentation" viewBox="0 0 24 24" width="44" class="group-data-[selected=true]:text-secondary">
+                                                                <g fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+                                                                    <path d="M10 4.5V18a4.007 4.007 0 01-1.14 2.79l-.04.04a3.149 3.149 0 01-.28.25 3.5 3.5 0 01-.99.6c-.11.05-.22.09-.33.13A3.888 3.888 0 016 22a4.255 4.255 0 01-.8-.08c-.13-.03-.26-.06-.39-.1a3.611 3.611 0 01-.46-.17c0-.01 0-.01-.01 0a5.042 5.042 0 01-.8-.49l-.01-.01a2.744 2.744 0 01-.36-.32c-.11-.12-.22-.24-.33-.37a5.042 5.042 0 01-.49-.8c.01-.01.01-.01 0-.01a.031.031 0 00-.01-.02c-.06-.14-.11-.29-.16-.44-.04-.13-.07-.26-.1-.39A4.255 4.255 0 012 18V4.5A2.362 2.362 0 014.5 2h3A2.362 2.362 0 0110 4.5z"></path>
+                                                                    <path d="M22 16.5v3a2.362 2.362 0 01-2.5 2.5H6a3.888 3.888 0 001.22-.19c.11-.04.22-.08.33-.13a3.5 3.5 0 00.99-.6 3.149 3.149 0 00.28-.25l.04-.04 6.8-6.79h3.84a2.362 2.362 0 012.5 2.5zM4.81 21.82a3.835 3.835 0 01-1.64-.99 3.835 3.835 0 01-.99-1.64 4.02 4.02 0 002.63 2.63z"></path>
+                                                                    <path d="M18.37 11.29L15.66 14l-6.8 6.79A4.007 4.007 0 0010 18V8.335l2.71-2.705a2.368 2.368 0 013.54 0l2.12 2.12a2.368 2.368 0 010 3.54zM7 18a1 1 0 11-1-1 1 1 0 011 1z"></path>
+                                                                </g>
+                                                            </svg>
+                                                            <p class="group-data-[selected=true]:text-secondary">Sleek</p>
+                                                        </div>
+                                                    </div>
+                                                </button>
+                                                <button data-slot="tab" tabindex="-1" data-key="elegant" id="react-aria-:R1cjlkpla:-tab-elegant" aria-selected="false" role="tab" class="z-0 py-1 flex group relative justify-center items-center cursor-pointer tap-highlight-transparent data-[disabled=true]:cursor-not-allowed data-[disabled=true]:opacity-30 data-[hover-unselected=true]:opacity-disabled outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 text-small rounded-small transition-none data-[selected=true]:text-default-foreground px-0 w-fit h-auto data-[selected=true]:bg-transparent" type="button">
+                                                    <div class="relative z-10 whitespace-nowrap transition-none group-data-[selected=true]:text-default-foreground text-default-400 text-base" data-slot="tabContent">
+                                                        <div class="flex flex-col justify-center items-center gap-2">
+                                                            <svg aria-hidden="true" fill="none" focusable="false" height="44" role="presentation" viewBox="0 0 24 24" width="44">
+                                                                <path d="M3.5 20.5c.83.83 2.17.83 3 0l13-13c.83-.83.83-2.17 0-3-.83-.83-2.17-.83-3 0l-13 13c-.83.83-.83 2.17 0 3ZM18.01 8.99l-3-3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+                                                                <path d="M8.5 2.44 10 2l-.44 1.5L10 5l-1.5-.44L7 5l.44-1.5L7 2l1.5.44ZM4.5 8.44 6 8l-.44 1.5L6 11l-1.5-.44L3 11l.44-1.5L3 8l1.5.44ZM19.5 13.44 21 13l-.44 1.5L21 16l-1.5-.44L18 16l.44-1.5L18 13l1.5.44Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                            </svg>
+                                                            <p class="group-data-[selected=true]:text-foreground">Powerful</p>
+                                                        </div>
+                                                    </div>
+                                                </button>
+                                                <button data-slot="tab" tabindex="-1" data-key="retro" id="react-aria-:R1cjlkpla:-tab-retro" aria-selected="false" role="tab" class="z-0 py-1 flex group relative justify-center items-center cursor-pointer tap-highlight-transparent data-[disabled=true]:cursor-not-allowed data-[disabled=true]:opacity-30 data-[hover-unselected=true]:opacity-disabled outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 text-small rounded-small transition-none data-[selected=true]:text-default-foreground px-0 w-fit h-auto data-[selected=true]:bg-transparent" type="button">
+                                                    <div class="relative z-10 whitespace-nowrap transition-none group-data-[selected=true]:text-default-foreground text-default-400 text-base" data-slot="tabContent">
+                                                        <div class="flex flex-col justify-center items-center gap-2">
+                                                            <svg aria-hidden="true" fill="none" focusable="false" height="44" role="presentation" viewBox="0 0 24 24" width="44" class="group-data-[selected=true]:text-warning">
+                                                                <path d="M21 7v10c0 3-1.5 5-5 5H8c-3.5 0-5-2-5-5V7c0-3 1.5-5 5-5h8c3.5 0 5 2 5 5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5"></path>
+                                                                <path d="M16.25 11h-8.5C6.79 11 6 10.21 6 9.25v-2.5C6 5.79 6.79 5 7.75 5h8.5c.96 0 1.75.79 1.75 1.75v2.5c0 .96-.79 1.75-1.75 1.75ZM10.3 15.28 8 17.58M8.03 15.31l2.3 2.3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5"></path>
+                                                                <path d="M16.49 15.33h.02M14.49 17.5v-.02" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"></path>
+                                                            </svg>
+                                                            <p class="group-data-[selected=true]:text-warning">Functions</p>
+                                                        </div>
+                                                    </div>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="flex flex-col relative height-auto text-foreground box-border bg-content1 outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large transition-transform-background motion-reduce:transition-none overflow-visible h-auto lg:h-[240px] dark:border-transparent" tabindex="-1">
+                                            <div class="flex w-full p-5 flex-auto place-content-inherit align-items-inherit h-auto break-words text-left subpixel-antialiased relative flex-col md:flex-row md:items-center gap-4 md:gap-9 overflow-visible">
+                                                <div class="flex-none w-full sm:w-48 h-48 mb-6 sm:mb-0 relative z-10 before:absolute before:top-0 before:left-0 before:w-full ">
+                                                   <img src="img/win.png"  alt="">  </div>
+                                                <div class="flex flex-col justify-center transition-all h-[200px]">
+                                                    <div class="relative flex flex-wrap items-baseline">
+                                                        <h1  class="relative w-full flex-none text-xl font-semibold text-foreground">Extract With WinRAR</h1>
+                                                        <p class="my-2 w-full text-base text-default-500">Download, Extract, Ready to use</p>
+                                                        <p class="relative text-lg font-semibold text-foreground">$0</p>
+                                                        <p class="relative line-through font-semibold text-default-400 ml-3">$50</p>
+                                                        <p class="relative font-normal text-success ml-3">Free</p>
+                                                    </div>
+                                                    <div class="relative flex flex-col gap-2 my-4" aria-label="select size" role="radiogroup" aria-orientation="horizontal" id="react-aria-:R56cjlkpla:" aria-describedby="react-aria-:R56cjlkplaH3: react-aria-:R56cjlkplaH4:">
+                                                        <div class="flex flex-col flex-wrap gap-2 data-[orientation=horizontal]:flex-row" role="presentation" data-orientation="horizontal">
+                                                             
+                                                         
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex space-x-4">
+                                                        <button class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap subpixel-antialiased overflow-hidden tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-unit-4 min-w-unit-20 h-unit-10 gap-unit-2 rounded-medium [&amp;&gt;svg]:max-w-[theme(spacing.unit-8)] data-[pressed=true]:scale-[0.97] transition-transform-colors motion-reduce:transition-none shadow-lg shadow-primary/40 bg-primary text-primary-foreground text-sm font-normal" type="button">
+                                                             <a href="https://drive.google.com/drive/folders/1EYft5EArdYs7GhHWcy8XJiIDKzwAFxbU?usp=sharing">Download Now</a></button>
+                                                        <button class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap subpixel-antialiased overflow-hidden tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 border-medium px-unit-4 min-w-unit-20 h-unit-10 gap-unit-2 rounded-full [&amp;&gt;svg]:max-w-[theme(spacing.unit-8)] data-[pressed=true]:scale-[0.97] transition-transform-colors motion-reduce:transition-none bg-transparent border-primary text-primary text-sm font-normal" type="button"> 
+                                                            <a href="documentation.pdf">Documentation</a></button></button>
+                                                    </div>
+                                                </div>
+                                            
+                                            </div>
+                                        </div>
+                                          </div>
+                                    <div class="relative">
+                                        <pre class="relative w-full h-full box-border shadow-md text-white/80 leading-5 whitespace-pre text-sm font-mono bg-code-background rounded-xl [&amp;&gt;code]:transition-transform overflow-hidden code-block language-jsx max-h-[440px] min-h-[390px]">
+                                            <div class="flex items-center sticky top-0 left-0 px-4 z-10 justify-between h-8 bg-code-background w-full">
+                                                <div class="flex items-center gap-2 basis-1/3">
+                                                    <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                                    <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                                    <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                                                </div>
+                                                <div class="flex basis-1/3 h-full justify-center items-center">
+                                                    <p class="text-white/30 text-xs font-light">ArrayUtilsExample.cpp</p>
+                                                </div>
+                                                <div class="flex basis-1/3"></div>
+                                            
+                                            </div>
+                                            
+                                            <code class="language-jsx absolute w-full px-4 pb-6 top-10">
+                                                <div data-line="1" class="highlight-line" data-highlighted="true">
+                                                    <span class="token keyword">const</span>
+                                                    <span class="token punctuation">{</span>
+                                                    nextui <span class="token punctuation">}</span>
+                                                    <span class="token operator">=</span>
+                                                    <span class="token function">require</span>
+                                                    <span class="token punctuation">(</span>
+                                                    <span class="token string">"@nextui-org/react"</span>
+                                                    <span class="token punctuation">)</span>
+                                                    <span class="token punctuation">;</span>
+                                                </div>
+                                                <div data-line="2" class="highlight-line" data-highlighted="true"></div>
+                                                <div data-line="3" class="highlight-line" data-highlighted="true">
+                                                    module<span class="token punctuation">.</span>
+                                                    exports <span class="token operator">=</span>
+                                                    <span class="token punctuation">{</span>
+                                                </div>
+                                                <div data-line="4" class="highlight-line" data-highlighted="true">
+                                                    <span class="token comment">// ...</span>
+                                                </div>
+                                                <div data-line="5" class="highlight-line" data-highlighted="true">
+                                                    plugins<span class="token operator">:</span>
+                                                    <span class="token punctuation">[</span>
+                                                </div>
+                                                <div data-line="6" class="highlight-line" data-highlighted="true">
+                                                    <span class="token function">nextui</span>
+                                                    <span class="token punctuation">(</span>
+                                                    <span class="token punctuation">{</span>
+                                                </div>
+                                                <div data-line="7" class="highlight-line" data-highlighted="true">
+                                                    themes<span class="token operator">:</span>
+                                                    <span class="token punctuation">{</span>
+                                                </div>
+                                                <div data-line="8" class="highlight-line" data-highlighted="true">
+                                                    light<span class="token operator">:</span>
+                                                    <span class="token punctuation">{</span>
+                                                </div>
+                                                <div data-line="9" class="highlight-line" data-highlighted="true">
+                                                    colors<span class="token operator">:</span>
+                                                    <span class="token punctuation">{</span>
+                                                </div>
+                                                <div data-line="10" class="highlight-line" data-highlighted="true">
+                                                    primary<span class="token operator">:</span>
+                                                    <span class="token string">"#0072f5"</span>
+                                                    <span class="token punctuation">,</span>
+                                                </div>
+                                                <div data-line="11" class="highlight-line" data-highlighted="true">
+                                                    <span class="token punctuation">}</span>
+                                                </div>
+                                                <div data-line="12" class="highlight-line" data-highlighted="true">
+                                                    <span class="token punctuation">}</span>
+                                                    <span class="token punctuation">,</span>
+                                                </div>
+                                                <div data-line="13" class="highlight-line" data-highlighted="true">
+                                                    dark<span class="token operator">:</span>
+                                                    <span class="token punctuation">{</span>
+                                                </div>
+                                                <div data-line="14" class="highlight-line" data-highlighted="true">
+                                                    colors<span class="token operator">:</span>
+                                                    <span class="token punctuation">{</span>
+                                                </div>
+                                                <div data-line="15" class="highlight-line" data-highlighted="true">
+                                                    primary<span class="token operator">:</span>
+                                                    <span class="token string">"#0072f5"</span>
+                                                    <span class="token punctuation">,</span>
+                                                </div>
+                                                <div data-line="16" class="highlight-line" data-highlighted="true">
+                                                    <span class="token punctuation">}</span>
+                                                </div>
+                                                <div data-line="17" class="highlight-line" data-highlighted="true">
+                                                    <span class="token punctuation">}</span>
+                                                    <span class="token punctuation">,</span>
+                                                </div>
+                                                <div data-line="18" class="highlight-line" data-highlighted="true">
+                                                    <span class="token punctuation">}</span>
+                                                    <span class="token punctuation">,</span>
+                                                </div>
+                                                <div data-line="19" class="highlight-line" data-highlighted="true">
+                                                    <span class="token punctuation">}</span>
+                                                    <span class="token punctuation">)</span>
+                                                    <span class="token punctuation">,</span>
+                                                </div>
+                                                <div data-line="20" class="highlight-line" data-highlighted="true">
+                                                    <span class="token punctuation">]</span>
+                                                    <span class="token punctuation">,</span>
+                                                </div>
+                                                <div data-line="21" class="highlight-line" data-highlighted="true">
+                                                    <span class="token punctuation">}</span>
+                                                    <span class="token punctuation">;</span>
+                                                </div>
+                                                <div data-line="22" class="highlight-line" data-highlighted="true"></div>
+                                                <div data-line="23" class="highlight-line" data-highlighted="true">
+                                                    module<span class="token punctuation">.</span>
+                                                    exports <span class="token operator">=</span>
+                                                    <span class="token punctuation">{</span>
+                                                </div>
+                                                <div data-line="24" class="highlight-line" data-highlighted="true">
+                                                    <span class="token comment">// ...</span>
+                                                </div>
+                                                <div data-line="25" class="highlight-line" data-highlighted="true">
+                                                    plugins<span class="token operator">:</span>
+                                                    <span class="token punctuation">[</span>
+                                                </div>
+                                                <div data-line="26" class="highlight-line" data-highlighted="true">
+                                                    <span class="token function">nextui</span>
+                                                    <span class="token punctuation">(</span>
+                                                    <span class="token punctuation">{</span>
+                                                </div>
+                                                <div data-line="27" class="highlight-line" data-highlighted="true">
+                                                    themes<span class="token operator">:</span>
+                                                    <span class="token punctuation">{</span>
+                                                </div>
+                                                <div data-line="28" class="highlight-line" data-highlighted="true">
+                                                    light<span class="token operator">:</span>
+                                                    <span class="token punctuation">{</span>
+                                                </div>
+                                                <div data-line="29" class="highlight-line" data-highlighted="true">
+                                                    colors<span class="token operator">:</span>
+                                                    <span class="token punctuation">{</span>
+                                                </div>
+                                                <div data-line="30" class="highlight-line" data-highlighted="true">
+                                                    primary<span class="token operator">:</span>
+                                                    <span class="token string">"#7828c8"</span>
+                                                    <span class="token punctuation">,</span>
+                                                </div>
+                                                <div data-line="31" class="highlight-line" data-highlighted="true">
+                                                    <span class="token punctuation">}</span>
+                                                </div>
+                                                <div data-line="32" class="highlight-line" data-highlighted="true">
+                                                    <span class="token punctuation">}</span>
+                                                    <span class="token punctuation">,</span>
+                                                </div>
+                                                <div data-line="33" class="highlight-line" data-highlighted="true">
+                                                    dark<span class="token operator">:</span>
+                                                    <span class="token punctuation">{</span>
+                                                </div>
+                                                <div data-line="34" class="highlight-line" data-highlighted="true">
+                                                    colors<span class="token operator">:</span>
+                                                    <span class="token punctuation">{</span>
+                                                </div>
+                                                <div data-line="35" class="highlight-line" data-highlighted="true">
+                                                    primary<span class="token operator">:</span>
+                                                    <span class="token string">"#9353d3"</span>
+                                                    <span class="token punctuation">,</span>
+                                                </div>
+                                                <div data-line="36" class="highlight-line" data-highlighted="true">
+                                                    <span class="token punctuation">}</span>
+                                                </div>
+                                                <div data-line="37" class="highlight-line" data-highlighted="true">
+                                                    <span class="token punctuation">}</span>
+                                                    <span class="token punctuation">,</span>
+                                                </div>
+                                                <div data-line="38" class="highlight-line" data-highlighted="true">
+                                                    <span class="token punctuation">}</span>
+                                                    <span class="token punctuation">,</span>
+                                                </div>
+                                                <div data-line="39" class="highlight-line" data-highlighted="true">
+                                                    <span class="token punctuation">}</span>
+                                                    <span class="token punctuation">)</span>
+                                                    <span class="token punctuation">,</span>
+                                                </div>
+                                                <div data-line="40" class="highlight-line" data-highlighted="true">
+                                                    <span class="token punctuation">]</span>
+                                                    <span class="token punctuation">,</span>
+                                                </div>
+                                                <div data-line="41" class="highlight-line" data-highlighted="true">
+                                                    <span class="token punctuation">}</span>
+                                                    <span class="token punctuation">;</span>
+                                                </div>
+                                                <div data-line="42" class="highlight-line" data-highlighted="true"></div>
+                                                <div data-line="43" class="highlight-line" data-highlighted="true">
+                                                    module<span class="token punctuation">.</span>
+                                                    exports <span class="token operator">=</span>
+                                                    <span class="token punctuation">{</span>
+                                                </div>
+                                                <div data-line="44" class="highlight-line" data-highlighted="true">
+                                                    <span class="token comment">// ...</span>
+                                                </div>
+                                                <div data-line="45" class="highlight-line" data-highlighted="true">
+                                                    plugins<span class="token operator">:</span>
+                                                    <span class="token punctuation">[</span>
+                                                </div>
+                                                <div data-line="46" class="highlight-line" data-highlighted="true">
+                                                    <span class="token function">nextui</span>
+                                                    <span class="token punctuation">(</span>
+                                                    <span class="token punctuation">{</span>
+                                                </div>
+                                                <div data-line="47" class="highlight-line" data-highlighted="true">
+                                                    themes<span class="token operator">:</span>
+                                                    <span class="token punctuation">{</span>
+                                                </div>
+                                                <div data-line="48" class="highlight-line" data-highlighted="true">
+                                                    light<span class="token operator">:</span>
+                                                    <span class="token punctuation">{</span>
+                                                </div>
+                                                <div data-line="49" class="highlight-line" data-highlighted="true">
+                                                    colors<span class="token operator">:</span>
+                                                    <span class="token punctuation">{</span>
+                                                </div>
+                                                <div data-line="50" class="highlight-line" data-highlighted="true">
+                                                    primary<span class="token operator">:</span>
+                                                    <span class="token string">"#FFFFFF"</span>
+                                                    <span class="token punctuation">,</span>
+                                                </div>
+                                                <div data-line="51" class="highlight-line" data-highlighted="true">
+                                                    <span class="token punctuation">}</span>
+                                                </div>
+                                                <div data-line="52" class="highlight-line" data-highlighted="true">
+                                                    <span class="token punctuation">}</span>
+                                                    <span class="token punctuation">,</span>
+                                                </div>
+                                                <div data-line="53" class="highlight-line" data-highlighted="true">
+                                                    dark<span class="token operator">:</span>
+                                                    <span class="token punctuation">{</span>
+                                                </div>
+                                                <div data-line="54" class="highlight-line" data-highlighted="true">
+                                                    colors<span class="token operator">:</span>
+                                                    <span class="token punctuation">{</span>
+                                                </div>
+                                                <div data-line="55" class="highlight-line" data-highlighted="true">
+                                                    primary<span class="token operator">:</span>
+                                                    <span class="token string">"#000000"</span>
+                                                    <span class="token punctuation">,</span>
+                                                </div>
+                                                <div data-line="56" class="highlight-line" data-highlighted="true">
+                                                    <span class="token punctuation">}</span>
+                                                </div>
+                                                <div data-line="57" class="highlight-line" data-highlighted="true">
+                                                    <span class="token punctuation">}</span>
+                                                    <span class="token punctuation">,</span>
+                                                </div>
+                                                <div data-line="58" class="highlight-line" data-highlighted="true">
+                                                    <span class="token punctuation">}</span>
+                                                    <span class="token punctuation">,</span>
+                                                </div>
+                                                <div data-line="59" class="highlight-line" data-highlighted="true">
+                                                    <span class="token punctuation">}</span>
+                                                    <span class="token punctuation">)</span>
+                                                    <span class="token punctuation">,</span>
+                                                </div>
+                                                <div data-line="60" class="highlight-line" data-highlighted="true">
+                                                    <span class="token punctuation">]</span>
+                                                    <span class="token punctuation">,</span>
+                                                </div>
+                                                <div data-line="61" class="highlight-line" data-highlighted="true">
+                                                    <span class="token punctuation">}</span>
+                                                    <span class="token punctuation">;</span>
+                                                </div>
+                                                <div data-line="62" class="highlight-line" data-highlighted="true"></div>
+                                                <div data-line="63" class="highlight-line" data-highlighted="true">
+                                                    module<span class="token punctuation">.</span>
+                                                    exports <span class="token operator">=</span>
+                                                    <span class="token punctuation">{</span>
+                                                </div>
+                                                <div data-line="64" class="highlight-line" data-highlighted="true">
+                                                    <span class="token comment">// ...</span>
+                                                </div>
+                                                <div data-line="65" class="highlight-line" data-highlighted="true">
+                                                    plugins<span class="token operator">:</span>
+                                                    <span class="token punctuation">[</span>
+                                                </div>
+                                                <div data-line="66" class="highlight-line" data-highlighted="true">
+                                                    <span class="token function">nextui</span>
+                                                    <span class="token punctuation">(</span>
+                                                    <span class="token punctuation">{</span>
+                                                </div>
+                                                <div data-line="67" class="highlight-line" data-highlighted="true">
+                                                    themes<span class="token operator">:</span>
+                                                    <span class="token punctuation">{</span>
+                                                </div>
+                                                <div data-line="68" class="highlight-line" data-highlighted="true">
+                                                    light<span class="token operator">:</span>
+                                                    <span class="token punctuation">{</span>
+                                                </div>
+                                                <div data-line="69" class="highlight-line" data-highlighted="true">
+                                                    colors<span class="token operator">:</span>
+                                                    <span class="token punctuation">{</span>
+                                                </div>
+                                                <div data-line="70" class="highlight-line" data-highlighted="true">
+                                                    primary<span class="token operator">:</span>
+                                                    <span class="token string">"#FFD34E"</span>
+                                                    <span class="token punctuation">,</span>
+                                                </div>
+                                                <div data-line="71" class="highlight-line" data-highlighted="true">
+                                                    secondary<span class="token operator">:</span>
+                                                    <span class="token string">"#EE457E"</span>
+                                                    <span class="token punctuation">,</span>
+                                                </div>
+                                                <div data-line="72" class="highlight-line" data-highlighted="true">
+                                                    background<span class="token operator">:</span>
+                                                    <span class="token string">"#F4E8D1"</span>
+                                                </div>
+                                                <div data-line="73" class="highlight-line" data-highlighted="true">
+                                                    <span class="token punctuation">}</span>
+                                                </div>
+                                                <div data-line="74" class="highlight-line" data-highlighted="true">
+                                                    <span class="token punctuation">}</span>
+                                                    <span class="token punctuation">,</span>
+                                                </div>
+                                                <div data-line="75" class="highlight-line" data-highlighted="true">
+                                                    dark<span class="token operator">:</span>
+                                                    <span class="token punctuation">{</span>
+                                                </div>
+                                                <div data-line="76" class="highlight-line" data-highlighted="true">
+                                                    colors<span class="token operator">:</span>
+                                                    <span class="token punctuation">{</span>
+                                                </div>
+                                                <div data-line="77" class="highlight-line" data-highlighted="true">
+                                                    primary<span class="token operator">:</span>
+                                                    <span class="token string">"#FFD34E"</span>
+                                                    <span class="token punctuation">,</span>
+                                                </div>
+                                                <div data-line="78" class="highlight-line" data-highlighted="true">
+                                                    secondary<span class="token operator">:</span>
+                                                    <span class="token string">"#EE457E"</span>
+                                                    <span class="token punctuation">,</span>
+                                                </div>
+                                                <div data-line="79" class="highlight-line" data-highlighted="true">
+                                                    background<span class="token operator">:</span>
+                                                    <span class="token string">"#E1CA9E"</span>
+                                                </div>
+                                                <div data-line="80" class="highlight-line" data-highlighted="true">
+                                                    <span class="token punctuation">}</span>
+                                                </div>
+                                                <div data-line="81" class="highlight-line" data-highlighted="true">
+                                                    <span class="token punctuation">}</span>
+                                                    <span class="token punctuation">,</span>
+                                                </div>
+                                                <div data-line="82" class="highlight-line" data-highlighted="true">
+                                                    <span class="token punctuation">}</span>
+                                                    <span class="token punctuation">,</span>
+                                                </div>
+                                                <div data-line="83" class="highlight-line" data-highlighted="true">
+                                                    <span class="token punctuation">}</span>
+                                                    <span class="token punctuation">)</span>
+                                                    <span class="token punctuation">,</span>
+                                                </div>
+                                                <div data-line="84" class="highlight-line" data-highlighted="true">
+                                                    <span class="token punctuation">]</span>
+                                                    <span class="token punctuation">,</span>
+                                                </div>
+                                                <div data-line="85" class="highlight-line" data-highlighted="true">
+                                                    <span class="token punctuation">}</span>
+                                                    <span class="token punctuation">;</span>
+                                                </div>
+                                            </code>
+                                        </pre>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="h-full dark:md:block absolute hidden -bottom-[10%] -left-[15%] -z-[1]">
+                                <img src="/gradients/blue-purple-1.svg" class="relative z-10 opacity-0 shadow-black/5 data-[loaded=true]:opacity-100 shadow-none transition-transform-opacity motion-reduce:transition-none !duration-300 rounded-large h-full" alt="custom themes background"/>
+                            </div>
+                        </section>
+                        <section class="relative flex flex-col gap-2 w-full z-20 mt-16 lg:mt-44">
+                            <div class="flex flex-col gap-8">
+                                <div>
+                                    <div class="flex flex-col gap-2 items-start justify-center w-full">
+                                        <h1 id="inside" class="tracking-tight inline font-semibold text-4xl lg:text-6xl">Inside the</h1>
+                                        <div>
+                                            <h1 class="tracking-tight inline font-semibold from-[#6FEE8D] to-[#17c964] text-4xl lg:text-6xl bg-clip-text text-transparent bg-gradient-to-b"> extracted folder</h1>
+                                            
+                                        </div>
+                                    </div>
+                                    <p class="w-full md:w-1/2 my-2 text-lg lg:text-xl font-normal text-default-500 block max-w-full">
+                                        navigate to the include directory . You'll find
+                                        
+                                    </p>
+                                    <p class="w-full md:w-1/2 my-2 text-lg lg:text-xl font-normal text-default-500 block max-w-full">
+                                        all necessary header files (*.h) here.
+                                        
+                                    </p>
+
+
+                                   
+                                </div>
+                                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                                    <div class="flex flex-col mt-8 lg:mt-16 gap-6">
+                                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
+                                            <div class="flex flex-col relative overflow-hidden height-auto text-foreground box-border outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large transition-transform-background motion-reduce:transition-none border-transparent backdrop-blur-lg backdrop-saturate-[1.8] bg-white dark:bg-default-400/10" tabindex="-1">
+                                                <div class="flex p-3 z-10 w-full justify-start items-center shrink-0 overflow-inherit color-inherit subpixel-antialiased rounded-t-large gap-2 pb-3">
+                                                    <div class="flex justify-center p-2 rounded-full items-center bg-default-100 dark:bg-transparent text-default-500/50">
+                                                        <svg aria-hidden="true" fill="none" focusable="false" height="24" role="presentation" viewBox="0 0 24 24" width="24">
+                                                            <path d="M18.27 3.35C17.8 3.28 17.26 3.25 16.5 3.25H7.5C6.75 3.25 6.2 3.28 5.76 3.34C2.41 3.71 1.75 5.7 1.75 9V15C1.75 18.3 2.41 20.29 5.73 20.65C6.2 20.72 6.74 20.75 7.5 20.75H16.5C17.25 20.75 17.8 20.72 18.24 20.66C21.59 20.29 22.25 18.31 22.25 15V9C22.25 5.7 21.59 3.71 18.27 3.35ZM10.09 9C10.65 9 11.1 9.45 11.1 10C11.1 10.55 10.65 11 10.1 11C9.55 11 9.1 10.55 9.1 10C9.1 9.45 9.54 9 10.09 9ZM7.09 9C7.66 9 8.1 9.45 8.1 10C8.1 10.55 7.65 11 7.1 11C6.55 11 6.1 10.55 6.1 10C6.1 9.45 6.54 9 7.09 9ZM17 16.25H7.02C6.61 16.25 6.26 15.91 6.26 15.5C6.26 15.09 6.59 14.75 7 14.75H17C17.41 14.75 17.75 15.09 17.75 15.5C17.75 15.91 17.41 16.25 17 16.25ZM17 10.75H13.5C13.09 10.75 12.75 10.41 12.75 10C12.75 9.59 13.09 9.25 13.5 9.25H17C17.41 9.25 17.75 9.59 17.75 10C17.75 10.41 17.41 10.75 17 10.75Z" fill="currentColor"></path>
+                                                        </svg>
+                                                    </div>
+                                                    <p class="text-base font-semibold">High-precision</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex flex-col relative overflow-hidden height-auto text-foreground box-border outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large transition-transform-background motion-reduce:transition-none border-transparent backdrop-blur-lg backdrop-saturate-[1.8] bg-white dark:bg-default-400/10" tabindex="-1">
+                                                <div class="flex p-3 z-10 w-full justify-start items-center shrink-0 overflow-inherit color-inherit subpixel-antialiased rounded-t-large gap-2 pb-3">
+                                                    <div class="flex justify-center p-2 rounded-full items-center bg-default-100 dark:bg-transparent text-default-500/50">
+                                                        <svg aria-hidden="true" fill="none" focusable="false" height="24" role="presentation" viewBox="0 0 24 24" width="24">
+                                                            <path d="M20.9597 17.8385L19.3297 18.3885C18.8797 18.5385 18.5197 18.8885 18.3697 19.3485L17.8197 20.9785C17.3497 22.3885 15.3697 22.3585 14.9297 20.9485L13.0797 14.9985C12.7197 13.8185 13.8097 12.7185 14.9797 13.0885L20.9397 14.9385C22.3397 15.3785 22.3597 17.3685 20.9597 17.8385Z" fill="currentColor"></path>
+                                                            <path d="M20.9994 11.4994C20.9994 11.9294 20.9694 12.3594 20.9194 12.7794C20.8794 13.0794 20.5694 13.2594 20.2794 13.1694L15.4294 11.6594C14.3494 11.3294 13.1994 11.6094 12.3994 12.3994C11.5994 13.1994 11.3094 14.3694 11.6494 15.4494L13.1494 20.2794C13.2394 20.5694 13.0494 20.8794 12.7494 20.9194C12.3294 20.9694 11.9194 20.9994 11.4994 20.9994C6.15942 20.9994 1.85942 16.6094 1.99942 11.2294C2.13942 6.26942 6.26942 2.13942 11.2294 1.99942C16.6094 1.85942 20.9994 6.15942 20.9994 11.4994Z" fill="currentColor"></path>
+                                                        </svg>
+                                                    </div>
+                                                    <p class="text-base font-semibold">Versatile</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex flex-col relative overflow-hidden height-auto text-foreground box-border outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large transition-transform-background motion-reduce:transition-none border-transparent backdrop-blur-lg backdrop-saturate-[1.8] bg-white dark:bg-default-400/10" tabindex="-1">
+                                                <div class="flex p-3 z-10 w-full justify-start items-center shrink-0 overflow-inherit color-inherit subpixel-antialiased rounded-t-large gap-2 pb-3">
+                                                    <div class="flex justify-center p-2 rounded-full items-center bg-default-100 dark:bg-transparent text-default-500/50">
+                                                        <svg aria-hidden="true" fill="none" focusable="false" height="24" role="presentation" viewBox="0 0 24 24" width="24">
+                                                            <path d="M12 18.5V19.38C12 21.25 11.25 22 9.37 22H4.62C3.17 22 2 20.83 2 19.38V14.63C2 12.75 2.75 12 4.62 12H5.5V15.5C5.5 17.16 6.84 18.5 8.5 18.5H12Z" fill="currentColor"></path>
+                                                            <path d="M17 13.5V14.37C17 15.82 15.82 17 14.37 17H9.62C7.75 17 7 16.25 7 14.37V9.62C7 8.17 8.17 7 9.62 7H10.5V10.5C10.5 12.16 11.84 13.5 13.5 13.5H17Z" fill="currentColor"></path>
+                                                            <path d="M22 4.62V9.37C22 11.25 21.25 12 19.37 12H14.62C12.75 12 12 11.25 12 9.37V4.62C12 2.75 12.75 2 14.62 2H19.37C21.25 2 22 2.75 22 4.62Z" fill="currentColor"></path>
+                                                        </svg>
+                                                    </div>
+                                                    <p class="text-base font-semibold">Comprehensive</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex flex-col relative overflow-hidden height-auto text-foreground box-border outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large transition-transform-background motion-reduce:transition-none border-transparent backdrop-blur-lg backdrop-saturate-[1.8] bg-white dark:bg-default-400/10" tabindex="-1">
+                                                <div class="flex p-3 z-10 w-full justify-start items-center shrink-0 overflow-inherit color-inherit subpixel-antialiased rounded-t-large gap-2 pb-3">
+                                                    <div class="flex justify-center p-2 rounded-full items-center bg-default-100 dark:bg-transparent text-default-500/50">
+                                                        <svg aria-hidden="true" fill="none" focusable="false" height="24" role="presentation" viewBox="0 0 24 24" width="24">
+                                                            <path d="M19.9 13.5H4.1C2.6 13.5 2 14.14 2 15.73V19.77C2 21.36 2.6 22 4.1 22H19.9C21.4 22 22 21.36 22 19.77V15.73C22 14.14 21.4 13.5 19.9 13.5Z" fill="currentColor"></path>
+                                                            <path d="M12.9 2H4.1C2.6 2 2 2.64 2 4.23V8.27C2 9.86 2.6 10.5 4.1 10.5H12.9C14.4 10.5 15 9.86 15 8.27V4.23C15 2.64 14.4 2 12.9 2Z" fill="currentColor"></path>
+                                                        </svg>
+                                                    </div>
+                                                    <p class="text-base font-semibold">Fundamental</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex flex-col relative overflow-hidden height-auto text-foreground box-border outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large transition-transform-background motion-reduce:transition-none border-transparent backdrop-blur-lg backdrop-saturate-[1.8] bg-white dark:bg-default-400/10" tabindex="-1">
+                                                <div class="flex p-3 z-10 w-full justify-start items-center shrink-0 overflow-inherit color-inherit subpixel-antialiased rounded-t-large gap-2 pb-3">
+                                                    <div class="flex justify-center p-2 rounded-full items-center bg-default-100 dark:bg-transparent text-default-500/50">
+                                                        <svg aria-hidden="true" fill="none" focusable="false" height="24" role="presentation" viewBox="0 0 24 24" width="24">
+                                                            <path d="M21.25 9.14969C18.94 5.51969 15.56 3.42969 12 3.42969C10.22 3.42969 8.49 3.94969 6.91 4.91969C5.33 5.89969 3.91 7.32969 2.75 9.14969C1.75 10.7197 1.75 13.2697 2.75 14.8397C5.06 18.4797 8.44 20.5597 12 20.5597C13.78 20.5597 15.51 20.0397 17.09 19.0697C18.67 18.0897 20.09 16.6597 21.25 14.8397C22.25 13.2797 22.25 10.7197 21.25 9.14969ZM12 16.0397C9.76 16.0397 7.96 14.2297 7.96 11.9997C7.96 9.76969 9.76 7.95969 12 7.95969C14.24 7.95969 16.04 9.76969 16.04 11.9997C16.04 14.2297 14.24 16.0397 12 16.0397Z" fill="currentColor"></path>
+                                                            <path d="M11.9984 9.14062C10.4284 9.14062 9.14844 10.4206 9.14844 12.0006C9.14844 13.5706 10.4284 14.8506 11.9984 14.8506C13.5684 14.8506 14.8584 13.5706 14.8584 12.0006C14.8584 10.4306 13.5684 9.14062 11.9984 9.14062Z" fill="currentColor"></path>
+                                                        </svg>
+                                                    </div>
+                                                    <p class="text-base font-semibold">Intricate</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex flex-col relative overflow-hidden height-auto text-foreground box-border outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large transition-transform-background motion-reduce:transition-none border-transparent backdrop-blur-lg backdrop-saturate-[1.8] bg-white dark:bg-default-400/10" tabindex="-1">
+                                                <div class="flex p-3 z-10 w-full justify-start items-center shrink-0 overflow-inherit color-inherit subpixel-antialiased rounded-t-large gap-2 pb-3">
+                                                    <div class="flex justify-center p-2 rounded-full items-center bg-default-100 dark:bg-transparent text-default-500/50">
+                                                        <svg aria-hidden="true" fill="none" focusable="false" height="24" role="presentation" viewBox="0 0 24 24" width="24">
+                                                            <path d="M17 22.75H7C6.59 22.75 6.25 22.41 6.25 22C6.25 21.59 6.59 21.25 7 21.25H17C17.41 21.25 17.75 21.59 17.75 22C17.75 22.41 17.41 22.75 17 22.75Z" fill="currentColor"></path>
+                                                            <path d="M18 2H6C3.79 2 2 3.79 2 6V15C2 17.21 3.79 19 6 19H18C20.21 19 22 17.21 22 15V6C22 3.79 20.21 2 18 2ZM9.99 7.32C10.55 7.32 11 7.77 11 8.32C11 8.87 10.55 9.32 10 9.32C9.45 9.32 9 8.87 9 8.32C9 7.77 9.44 7.32 9.99 7.32ZM6.84 7.32C7.4 7.32 7.85 7.77 7.85 8.32C7.85 8.87 7.4 9.32 6.85 9.32C6.3 9.32 5.85 8.87 5.85 8.32C5.85 7.77 6.28 7.32 6.84 7.32ZM17.26 14.86H6.76C6.34 14.86 6 14.52 6 14.11C6 13.7 6.33 13.36 6.74 13.36H17.27C17.68 13.36 18.02 13.7 18.02 14.11C18.02 14.52 17.68 14.86 17.26 14.86ZM17.26 9.07H13.58C13.17 9.07 12.83 8.73 12.83 8.32C12.83 7.91 13.17 7.57 13.58 7.57H17.26C17.67 7.57 18.01 7.91 18.01 8.32C18.01 8.73 17.68 9.07 17.26 9.07Z" fill="currentColor"></path>
+                                                        </svg>
+                                                    </div>
+                                                    <p class="text-base font-semibold">Exhaustive</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                       </div>
+                                    <div class="flex relative w-full bg-gradient-to-r from-[#4ADE80] to-[#06B6D4] rounded-2xl h-full min-h-[200px] lg:min-h-[390px] max-h-[300px] lg:pt-8 items-center lg:items-start justify-center">
+                                      <img src="img/example.png" style="width: 80%; margin-top: -5%;" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="absolute hidden dark:md:block h-full dark:opacity-70 -bottom-[10%] left-[20%] z-[-10]">
+                                <img src="img/example.png" class="relative opacity-0 shadow-black/5 data-[loaded=true]:opacity-100 shadow-none transition-transform-opacity motion-reduce:transition-none !duration-300 rounded-large h-full z-[-10]" alt="a11y background"/>
+                            </div>
+                            <!--$!-->
+                            <template data-dgst="NEXT_DYNAMIC_NO_SSR_CODE"></template>
+                            <!--/$-->
+                        </section>
+                        <section class="relative z-10 flex flex-col gap-2 w-full mt-16 lg:mt-44">
+                            <div class="flex flex-col gap-8">
+                                <div>
+                                    <div class="flex flex-col gap-2 items-start justify-center w-full">
+                                        <h1 class="tracking-tight inline font-semibold text-4xl lg:text-6xl">240 Finely</h1>
+                                        <div>
+                                            <h1 class="tracking-tight inline font-semibold text-4xl lg:text-6xl">Tuned</h1>
+                                            <h1 class="tracking-tight inline font-semibold from-[#FF705B] to-[#FFB457] text-4xl lg:text-6xl bg-clip-text text-transparent bg-gradient-to-b">Functions</h1>
+                                        </div>
+                                    </div>
+                                    <p class="w-full md:w-1/2 my-2 text-lg lg:text-xl font-normal text-default-500 block max-w-full">
+                                        This exhaustive collection caters to development, offering an array of high-precision functions spanning varied categories. <code class="px-2 py-1 h-fit font-mono font-normal inline-block whitespace-nowrap bg-default/40 text-default-foreground text-small rounded-small">built in functions</code>
+                                        to your <code class="px-2 py-1 h-fit font-mono font-normal inline-block whitespace-nowrap bg-default/40 text-default-foreground text-small rounded-small">code</code>
+                                        .
+                                    </p>
+                                </div>
+                                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                                    <div class="flex flex-col justify-center gap-6">
+                                        <div class="flex relative w-full h-auto bg-gradient-to-tr from-[#FFB457] to-[#FF705B] rounded-2xl items-center justify-center py-14 px-4 lg:px-8">
+                                                    <div class=" justify-center">
+                                                        <div class="relative col-span-6 md:col-span-4">
+                                                            <div class="relative shadow-black/5 shadow-medium rounded-large">
+                                                            <img src="img/example2.png" style="height: 300px;" alt=""> 
+                                                            </div>
+                                                        </div>
+                                                        <div class="flex flex-col col-span-6 md:col-span-8">
+                                                            <div class="flex justify-between items-start">
+                                                               
+                                                                
+                                                            </div>
+                                                            <div class="flex flex-col mt-3 gap-1">
+                                                                <div class="flex flex-col gap-2 w-full" id="react-aria-:Rd5cllkpla:" aria-label="Music progress" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" aria-valuetext="33%" role="progressbar">
+                                                                    <div class="z-0 relative bg-default-300/50 overflow-hidden h-1 rounded-full bg-default-500/30">
+                                                                        <div class="h-full bg-default-400 rounded-full transition-transform !duration-500 bg-default-800 dark:bg-white" style="transform:translateX(-100%)"></div>
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                            </div>
+                                                            <div class="flex w-full items-center justify-center">
+                                                               
+                                                                
+                                                               
+                                                           
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                </div>
+                               
+                            </div>
+                            <!--$!-->
+                            <template data-dgst="NEXT_DYNAMIC_NO_SSR_CODE"></template>
+                            <!--/$-->
+                        </section>
+                        <section class="relative z-10 flex flex-col gap-2 w-full mt-16 lg:mt-44">
+                            <div class="flex flex-col gap-8">
+                                <div>
+                                    <div class="flex-col gap-2 items-start justify-center w-full inline md:block">
+                                        <h1 id="refer" class="tracking-tight inline font-semibold text-4xl lg:text-6xl">Now ! Coding made</h1>
+                                        <div>
+                                            <h1 class="tracking-tight inline font-semibold from-[#FF72E1] to-[#F54C7A] text-4xl lg:text-6xl bg-clip-text text-transparent bg-gradient-to-b">easy.</h1>
+                                        </div>
+                                    </div>
+                                    <p class="w-full md:w-1/2 my-2 text-lg lg:text-xl font-normal text-default-500 block max-w-full">
+                                        You'll find all necessary
+                                        <!-- -->
+                                        <a class="relative inline-flex items-center tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 underline hover:opacity-80 active:opacity-disabled transition-opacity underline-offset-4 text-xl text-default-500 font-light [&amp;&gt;svg]:ml-1" tabindex="0" role="link"  rel="noopener noreferrer" target="_blank"> header files (*.h)</a>
+ here,<br>containing function declarations and structures.
+                                    </p>
+                                </div>
+                                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4" >
+                                    <div class="relative">
+                                        <pre class="relative w-full h-full box-border shadow-md text-white/80 leading-5 whitespace-pre text-sm font-mono bg-code-background rounded-xl [&amp;&gt;code]:transition-transform overflow-scroll code-block language-jsx min-h-[320px] h-auto" style="overflow: hidden;">
+                                            <div class="flex items-center sticky top-0 left-0 px-4 z-10 justify-between h-8 bg-code-background w-full">
+                                                <div class="flex items-center gap-2 basis-1/3">
+                                                    <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                                    <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                                    <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                                                </div>
+                                                <div class="flex basis-1/3 h-full justify-center items-center">
+                                                    <p class="text-white/30 text-xs font-light">License.md</p>
+                                                </div>
+                                                <div class="flex basis-1/3"></div>
+                                            </div>
+                                            <code>
+                                                
+            PrecisionLib240 Version: 2.4.0
+
+            License: MIT
+
+            Creator: Harleen Singh
+
+            Release Date: 31 December 2023
+
+
+
+
+            The API documentation detailing all available functions, 
+            their parameters, and usage examples is accessible in 
+            the PrecisionLib240 Documentation.
+                                            </code>
+                                        </pre>
+                                    </div>
+                                    <div class="flex flex-col justify-center gap-6">
+                                        <div class="flex relative w-full bg-gradient-to-tr from-[#FF72E1] to-[#F54C7A] rounded-2xl items-center justify-center h-full min-h-[320px] py-6 px-6">
+                                        <img src="img/example3.png" alt="">  
+                                        
+                                        </div>
+                                    </div>
+                                </div>
+                               
+                            </div>
+                        </section>
+                        <section class="relative z-10 flex flex-col gap-2 w-full mt-16 lg:mt-44">
+                            <div class="flex flex-col gap-0 md:gap-8">
+                                <div>
+                                    <div class="flex flex-col gap-2 justify-center w-full items-center">
+                                        <div>
+                                            <h1 class="tracking-tight inline font-semibold text-4xl lg:text-6xl">Last </h1>
+                                            <h1 class="tracking-tight inline font-semibold from-[#FF705B] to-[#FFB457] text-4xl lg:text-6xl bg-clip-text text-transparent bg-gradient-to-b">but</h1>
+                                        </div>
+                                        <div>
+                                            <h1 class="tracking-tight inline font-semibold text-4xl lg:text-6xl">not </h1>
+                                            <h1 class="tracking-tight inline font-semibold from-[#FF72E1] to-[#F54C7A] text-4xl lg:text-6xl bg-clip-text text-transparent bg-gradient-to-b">least.</h1>
+                                        </div>
+                                    </div>
+                                    <p class="w-full my-2 text-lg lg:text-xl font-normal text-default-500 max-w-full mt-4 md:w-full text-center flex justify-center items-center">Contribute to Precision 240 library.</p>
+                                </div>
+                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                                    <div class="flex flex-col relative overflow-hidden height-auto text-foreground box-border outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large transition-transform-background motion-reduce:transition-none border-transparent bg-white/5 dark:bg-default-400/10 backdrop-blur-lg backdrop-saturate-[1.8]" tabindex="-1">
+                                        <div class="flex p-3 z-10 w-full justify-start items-center shrink-0 overflow-inherit color-inherit subpixel-antialiased rounded-t-large gap-2 pb-0">
+                                            <div class="flex justify-center p-2 rounded-full items-center bg-secondary-100/80 text-pink-500">
+                                             
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="relative flex w-full p-5 flex-auto flex-col place-content-inherit align-items-inherit h-auto break-words text-left overflow-y-auto subpixel-antialiased">
+                                            <p class="font-normal text-base text-default-500">
+                                                Navigate to the GitHub repository of PrecisionLib240.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col relative overflow-hidden height-auto text-foreground box-border outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large transition-transform-background motion-reduce:transition-none border-transparent bg-white/5 dark:bg-default-400/10 backdrop-blur-lg backdrop-saturate-[1.8]" tabindex="-1">
+                                        <div class="flex p-3 z-10 w-full justify-start items-center shrink-0 overflow-inherit color-inherit subpixel-antialiased rounded-t-large gap-2 pb-0">
+                                            <div class="flex justify-center p-2 rounded-full items-center bg-secondary-100/80 text-pink-500">
+                                                
+                                            </div>
+                                         </div>
+                                        <div class="relative flex w-full p-5 flex-auto flex-col place-content-inherit align-items-inherit h-auto break-words text-left overflow-y-auto subpixel-antialiased">
+                                            <p class="font-normal text-base text-default-500">Fork the repository to create your copy.</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col relative overflow-hidden height-auto text-foreground box-border outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large transition-transform-background motion-reduce:transition-none border-transparent bg-white/5 dark:bg-default-400/10 backdrop-blur-lg backdrop-saturate-[1.8]" tabindex="-1">
+                                        <div class="flex p-3 z-10 w-full justify-start items-center shrink-0 overflow-inherit color-inherit subpixel-antialiased rounded-t-large gap-2 pb-0">
+                                            <div class="flex justify-center p-2 rounded-full items-center bg-secondary-100/80 text-pink-500">
+                                              
+                                            </div>
+                                          
+                                        </div>
+                                        <div class="relative flex w-full p-5 flex-auto flex-col place-content-inherit align-items-inherit h-auto break-words text-left overflow-y-auto subpixel-antialiased">
+                                            <p class="font-normal text-base text-default-500">Clone the forked repository to your local machine.</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col relative overflow-hidden height-auto text-foreground box-border outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large transition-transform-background motion-reduce:transition-none border-transparent bg-white/5 dark:bg-default-400/10 backdrop-blur-lg backdrop-saturate-[1.8]" tabindex="-1">
+                                        <div class="flex p-3 z-10 w-full justify-start items-center shrink-0 overflow-inherit color-inherit subpixel-antialiased rounded-t-large gap-2 pb-0">
+                                            <div class="flex justify-center p-2 rounded-full items-center bg-secondary-100/80 text-pink-500">
+                                               
+                                            </div>
+                                          
+                                        </div>
+                                        <div class="relative flex w-full p-5 flex-auto flex-col place-content-inherit align-items-inherit h-auto break-words text-left overflow-y-auto subpixel-antialiased">
+                                            <p class="font-normal text-base text-default-500">Create a new branch to make changes following the contribution guidelines.</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col relative overflow-hidden height-auto text-foreground box-border outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large transition-transform-background motion-reduce:transition-none border-transparent bg-white/5 dark:bg-default-400/10 backdrop-blur-lg backdrop-saturate-[1.8]" tabindex="-1">
+                                        <div class="flex p-3 z-10 w-full justify-start items-center shrink-0 overflow-inherit color-inherit subpixel-antialiased rounded-t-large gap-2 pb-0">
+                                            <div class="flex justify-center p-2 rounded-full items-center bg-secondary-100/80 text-pink-500">
+                                           
+                                            </div>
+                                         
+                                        </div>
+                                        <div class="relative flex w-full p-5 flex-auto flex-col place-content-inherit align-items-inherit h-auto break-words text-left overflow-y-auto subpixel-antialiased">
+                                            <p class="font-normal text-base text-default-500">Implement your modifications, ensuring they align with the project's standards and guidelines.</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col relative overflow-hidden height-auto text-foreground box-border outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large transition-transform-background motion-reduce:transition-none border-transparent bg-white/5 dark:bg-default-400/10 backdrop-blur-lg backdrop-saturate-[1.8]" tabindex="-1">
+                                        <div class="flex p-3 z-10 w-full justify-start items-center shrink-0 overflow-inherit color-inherit subpixel-antialiased rounded-t-large gap-2 pb-0">
+                                            <div class="flex justify-center p-2 rounded-full items-center bg-secondary-100/80 text-pink-500">
+                                               
+                                            </div>
+                                          
+                                        </div>
+                                        <div class="relative flex w-full p-5 flex-auto flex-col place-content-inherit align-items-inherit h-auto break-words text-left overflow-y-auto subpixel-antialiased">
+                                            <p class="font-normal text-base text-default-500">Test your changes thoroughly to ensure they work as intended.</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col relative overflow-hidden height-auto text-foreground box-border outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large transition-transform-background motion-reduce:transition-none border-transparent bg-white/5 dark:bg-default-400/10 backdrop-blur-lg backdrop-saturate-[1.8]" tabindex="-1">
+                                        <div class="flex p-3 z-10 w-full justify-start items-center shrink-0 overflow-inherit color-inherit subpixel-antialiased rounded-t-large gap-2 pb-0">
+                                            <div class="flex justify-center p-2 rounded-full items-center bg-secondary-100/80 text-pink-500">
+                                            
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="relative flex w-full p-5 flex-auto flex-col place-content-inherit align-items-inherit h-auto break-words text-left overflow-y-auto subpixel-antialiased">
+                                            <p class="font-normal text-base text-default-500">Commit your changes to the new branch.</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col relative overflow-hidden height-auto text-foreground box-border outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large transition-transform-background motion-reduce:transition-none border-transparent bg-white/5 dark:bg-default-400/10 backdrop-blur-lg backdrop-saturate-[1.8]" tabindex="-1">
+                                        <div class="flex p-3 z-10 w-full justify-start items-center shrink-0 overflow-inherit color-inherit subpixel-antialiased rounded-t-large gap-2 pb-0">
+                                            <div class="flex justify-center p-2 rounded-full items-center bg-secondary-100/80 text-pink-500">
+                    
+                                            </div>
+                                   
+                                        </div>
+                                        <div class="relative flex w-full p-5 flex-auto flex-col place-content-inherit align-items-inherit h-auto break-words text-left overflow-y-auto subpixel-antialiased">
+                                            <p class="font-normal text-base text-default-500">Push the changes to your forked repository.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                       
+                       
+                        <span aria-hidden="true" class="w-px h-px block" style="margin-left:0.25rem;margin-top:6rem"></span>
+                        <section class="relative z-10 flex-col gap-2 bg-transparent dark:bg-transparent before:bg-background/10 before:content-[&#x27;&#x27;] before:block before:z-[-1] before:absolute before:inset-0 before:backdrop-blur-md before:backdrop-saturate-200 border-t border-b border-divider px-8 w-screen flex justify-center items-center mt-16 lg:mt-44">
+                            <div class=" w-full max-w-7xl py-10 grid grid-cols-12 gap-6 md:gap-0 z-20">
+                                <div class="flex flex-col gap-2 col-span-12 md:col-span-6">
+                                    <div class="flex flex-col">
+                                        <h1 class="tracking-tight font-semibold text-[2.5rem] lg:text-5xl inline">Let &#x27;s make the</h1>
+                                        <div>
+                                            <h1 class="tracking-tight inline font-semibold text-[2.5rem] lg:text-5xl">Code </h1>
+                                            <h1 class="tracking-tight font-semibold from-[#FF1CF7] to-[#b249f8] text-[2.5rem] lg:text-5xl bg-clip-text text-transparent bg-gradient-to-b inline">Simple</h1>
+                                        </div>
+                                    </div>
+                                    <p class="w-full my-2 font-normal text-default-500 block max-w-full md:w-full text-base lg:text-lg">PrecisionLib240 is licensed under the MIT License.</p>
+                                    <div class="flex flex-row gap-3 justify-start">
+                                        <a class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-unit-4 min-w-unit-20 h-unit-10 gap-unit-2 rounded-full [&amp;&gt;svg]:max-w-[theme(spacing.unit-8)] data-[pressed=true]:scale-[0.97] transition-transform-colors motion-reduce:transition-none bg-secondary text-secondary-foreground text-sm" role="button" tabindex="0" href="https://github.com/harleen001/PrecisionLib240/blob/main/LICENSE">
+                                            View License
+                                            <svg aria-hidden="true" fill="none" focusable="false" height="1em" role="presentation" viewBox="0 0 24 24" width="1em" class="group-data-[hover=true]:translate-x-0.5 outline-none transition-transform" tabindex="-1">
+                                                <path d="M16.835 6.91821L23.9166 13.9999L16.835 21.0815" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"></path>
+                                                <path d="M4.08325 14H23.7183" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"></path>
+                                            </svg>
+                                        </a>
+                                        <a class="tap-highlight-transparent no-underline hover:opacity-80 active:opacity-disabled transition-opacity z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 border-medium px-unit-4 min-w-unit-20 h-unit-10 gap-unit-2 rounded-full [&amp;&gt;svg]:max-w-[theme(spacing.unit-8)] data-[pressed=true]:scale-[0.97] transition-transform-colors motion-reduce:transition-none bg-transparent border-default text-foreground text-sm" tabindex="0" role="button" href="https://github.com/harleen001/PrecisionLib240/" target="_blank" rel="noopener noreferrer">
+                                            <svg height="24" viewBox="0 0 24 24" width="24" aria-hidden="true" focusable="false" tabindex="-1">
+                                                <path clip-rule="evenodd" d="M12.026 2c-5.509 0-9.974 4.465-9.974 9.974 0 4.406 2.857 8.145 6.821 9.465.499.09.679-.217.679-.481 0-.237-.008-.865-.011-1.696-2.775.602-3.361-1.338-3.361-1.338-.452-1.152-1.107-1.459-1.107-1.459-.905-.619.069-.605.069-.605 1.002.07 1.527 1.028 1.527 1.028.89 1.524 2.336 1.084 2.902.829.091-.645.351-1.085.635-1.334-2.214-.251-4.542-1.107-4.542-4.93 0-1.087.389-1.979 1.024-2.675-.101-.253-.446-1.268.099-2.64 0 0 .837-.269 2.742 1.021a9.582 9.582 0 0 1 2.496-.336 9.554 9.554 0 0 1 2.496.336c1.906-1.291 2.742-1.021 2.742-1.021.545 1.372.203 2.387.099 2.64.64.696 1.024 1.587 1.024 2.675 0 3.833-2.33 4.675-4.552 4.922.355.308.675.916.675 1.846 0 1.334-.012 2.41-.012 2.737 0 .267.178.577.687.479C19.146 20.115 22 16.379 22 11.974 22 6.465 17.535 2 12.026 2z" fill="currentColor" fill-rule="evenodd"></path>
+                                            </svg>
+                                            Github
+                                        </a>
+                                    </div>
+                                </div>
+                               
+                            </div>
+                            <div class="absolute -top-20 lg:top-10 -translate-y-1/2 w-screen h-screen -z-50 opacity-0 data-[mounted=true]:opacity-100 transition-opacity bg-left bg-no-repeat bg-[url(&#x27;/gradients/looper-pattern.svg&#x27;)] after:content-[&#x27;&#x27;] after:absolute after:top-0 after:left-0 after:w-full after:h-full after:z-[-1] after:bg-gradient-to-b after:from-transparent after:to-white/80 dark:after:to-black/20 after:z-[-1]" data-mounted="false"></div>
+                        </section>
+                        <section class="relative z-10 gap-2 w-full flex flex-col items-center mt-16 lg:mt-44">
+                            <div class="max-w-4xl flex flex-col gap-8">
+                                <div>
+                                    <div class="flex flex-col gap-2 justify-center w-full items-center">
+                                        <div class="inline-flex items-center">
+                                            <h1 class="tracking-tight inline font-semibold text-4xl lg:text-6xl">Lets Connect</h1>
+                                        </div>
+                                    </div>
+                                    <p class="w-full my-2 text-lg lg:text-xl font-normal text-default-500 max-w-full md:w-full text-center flex justify-center items-center">Get involved in our community. Everyone is welcome!</p>
+                                    <span aria-hidden="true" class="w-px h-px block" style="margin-left:0.25rem;margin-top:3rem"></span>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 lg:grid-cols-3">
+                                        <button class="flex flex-col relative overflow-hidden height-auto text-foreground box-border outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large cursor-pointer transition-transform-background motion-reduce:transition-none data-[pressed=true]:scale-[0.97] tap-highlight-transparent border-transparent bg-white/5 dark:bg-default-400/10 backdrop-blur-lg backdrop-saturate-[1.8]" type="button" role="button">
+                                            <div class="flex p-3 z-10 w-full justify-start items-center shrink-0 overflow-inherit color-inherit subpixel-antialiased rounded-t-large gap-2 pb-0">
+                                                <div class="flex justify-center p-2 rounded-full items-center text-pink-500 bg-transparent">
+                                                    <img src="img/emoji.png" style="height: 40px;" alt="">
+                                                      
+                                                      
+                                                </div>
+                                                <a href="https://harleen001.github.io/portfolio1/form.html">  
+
+                                                    <p class="text-base font-semibold">Wave at Me</p>
+                                                   
+
+                                                </a>
+                                                
+                                            </div>
+                                            <div class="relative flex w-full p-5 flex-auto flex-col place-content-inherit align-items-inherit h-auto break-words text-left overflow-y-auto subpixel-antialiased pt-0">
+                                                <p class="font-normal text-base text-default-500">Extend a friendly wave! Let's connect and start a conversation.</p>
+                                            </div>
+                                        </button>
+                                        <button class="flex flex-col relative overflow-hidden height-auto text-foreground box-border outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large cursor-pointer transition-transform-background motion-reduce:transition-none data-[pressed=true]:scale-[0.97] tap-highlight-transparent border-transparent bg-white/5 dark:bg-default-400/10 backdrop-blur-lg backdrop-saturate-[1.8]" type="button" role="button">
+                                            <div class="flex p-3 z-10 w-full justify-start items-center shrink-0 overflow-inherit color-inherit subpixel-antialiased rounded-t-large gap-2 pb-0">
+                                                <div class="flex justify-center p-2 rounded-full items-center text-pink-500 bg-transparent">
+                                                   <img src="img/linkedin.png" style="height: 40px;"  alt="">
+                                                </div>
+
+
+                                                <a href="https://www.linkedin.com/in/harleen001/">
+
+                                                    <p class="text-base font-semibold">Linkedin</p>
+
+                                                </a>
+                                                
+                                              
+                                            </div>
+                                            <div class="relative flex w-full p-5 flex-auto flex-col place-content-inherit align-items-inherit h-auto break-words text-left overflow-y-auto subpixel-antialiased pt-0">
+                                                <p class="font-normal text-base text-default-500">Forge a professional link with me on LinkedIn. Network, collaborate, and stay in the loop.</p>
+                                            </div>
+                                        </button>
+                                        <button class="flex flex-col relative overflow-hidden height-auto text-foreground box-border outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large cursor-pointer transition-transform-background motion-reduce:transition-none data-[pressed=true]:scale-[0.97] tap-highlight-transparent border-transparent bg-white/5 dark:bg-default-400/10 backdrop-blur-lg backdrop-saturate-[1.8]" type="button" role="button">
+                                            <div class="flex p-3 z-10 w-full justify-start items-center shrink-0 overflow-inherit color-inherit subpixel-antialiased rounded-t-large gap-2 pb-0">
+                                                <div class="flex justify-center p-2 rounded-full items-center text-pink-500 bg-transparent">
+                                                    <img src="img/instagram.jpeg" style="height: 40px;" alt="">
+                                                </div>
+
+                                                <a href="https://www.instagram.com/iharleenjohal/">
+
+                                                    <p class="text-base font-semibold">Instagram</p>
+                                                </a>
+                                    
+                                            </div>
+                                            <div class="relative flex w-full p-5 flex-auto flex-col place-content-inherit align-items-inherit h-auto break-words text-left overflow-y-auto subpixel-antialiased pt-0">
+                                                <p class="font-normal text-base text-default-500">Discover a visual journey on Instagram. Follow for snapshots of life and shared moments.</p>
+                                            </div>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <span aria-hidden="true" class="w-px h-px block" style="margin-left:0.25rem;margin-top:6rem"></span>
+                    </section>
+                </main>
+                <footer class="container mx-auto max-w-7xl pb-12 px-12">
+                    <div class="flex flex-col justify-center items-center gap-1">
+                        <p class="text-sm text-default-400">
+                            Created by 
+                            <!--$-->
+                            <a class="relative inline-flex items-center tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 text-primary no-underline hover:opacity-80 active:opacity-disabled transition-opacity text-sm" tabindex="0" role="link" href="https://harleen001.github.io/portfolio1/" rel="noopener noreferrer" target="_blank">Harleen Singh</a>
+                            <!--/$-->
+                        </p>
+                       
+                    </div>
+                </footer>
+            </div>
+        </div>
+        <script src="/_next/static/chunks/webpack-6d59c264c8692b85.js" async=""></script>
+        <script>
+            (self.__next_f = self.__next_f || []).push([0])
+        </script>
+        <script>
+            self.__next_f.push([1, "1:HL[\"/_next/static/media/c9a5bc6a7c948fb0-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n2:HL[\"/_next/static/css/1508cb6220dbbd1d.css\",\"style\"]\n0:\"$L3\"\n"])
+        </script>
+        <script>
+            self.__next_f.push([1, "4:I{\"id\":84008,\"chunks\":[\"2272:static/chunks/webpack-6d59c264c8692b85.js\",\"6756:static/chunks/fab3b7d6-2de1731afed4db3f.js\",\"6794:static/chunks/6794-ecea2ee4450cef7b.js\"],\"name\":\"\",\"async\":false}\n6:I{\"id\":77372,\"chunks\":[\"2272:static/chunks/webpack-6d59c264c8692b85.js\",\"6756:static/chunks/fab3b7d6-2de1731afed4db3f.js\",\"6794:static/chunks/6794-ecea2ee4450cef7b.js\"],\"name\":\"\",\"async\":false}\n"])
+        </script>
+        <script>
+            self.__next_f.push([1, "7:I{\"id\":20268,\"chunks\":[\"8259:static/chunks/5e4f61c8-e1b88f1d92497853.js\",\"5164:static/chunks/41bd06d0-60d922364b29a395.js\",\"2816:static/chunks/c2a1a299-6a0b8c7cff44c70f.js\",\"25:static/chunks/25-245146478164138f.js\",\"5141:static/chunks/5141-bd4f81697c2dfde3.js\",\"2691:static/chunks/2691-6a6d100a2c34b785.js\",\"7821:static/chunks/7821-c003161c8ceb8dc0.js\",\"2407:static/chunks/2407-812e566289592756.js\",\"1203:static/chunks/1203-89fee94339d35b7d.js\",\"1385:static/chunks/1385-fc566d55117e6451.js\",\"4872:static/chunks/4872-5838c230dbd08087.js\",\"5718:static/chunks/5718-42c0e2485142dc4d.js\",\"783:static/chunks/783-59112894c3163b24.js\",\"1918:static/chunks/1918-73ddfad315654e6e.js\",\"3810:static/chunks/3810-a043a6ac63fdf38e.js\",\"8771:static/chunks/8771-fa1834e7152d7da4.js\",\"5906:static/chunks/5906-2309a5558ba513b6.js\",\"3297:static/chunks/3297-42389e4cb4840e6d.js\",\"6284:static/chunks/6284-a64b37999c9931dc.js\",\"6780:static/chunks/6780-0027b32d5435ac8d.js\",\"2042:static/chunks/2042-a9f7e86ffab6f390.js\",\"9734:static/chunks/9734-83cf7dc01b2773f5.js\",\"6767:static/chunks/6767-dc40dea334076681.js\",\"8167:static/chunks/8167-6f39a86c212ce012.js\",\"8057:static/chunks/8057-fe6c59a99b4294eb.js\",\"2386:static/chunks/2386-5a7623a5db586262.js\",\"598:static/chunks/598-daee7a6bbdafb8f2.js\",\"5036:static/chunks/5036-cb0eb256d5439627.js\",\"7315:static/chunks/7315-76123bcf4e134fa3.js\",\"7868:static/chunks/7868-3668c8b38a1da831.js\",\"3185:static/chunks/app/layout-c37a2c58ecc4dc67.js\"],\"name\":\"Providers\",\"async\":false}\n"])
+        </script>
+        <script>
+            self.__next_f.push([1, "8:I{\"id\":78483,\"chunks\":[\"8259:static/chunks/5e4f61c8-e1b88f1d92497853.js\",\"5164:static/chunks/41bd06d0-60d922364b29a395.js\",\"2816:static/chunks/c2a1a299-6a0b8c7cff44c70f.js\",\"25:static/chunks/25-245146478164138f.js\",\"5141:static/chunks/5141-bd4f81697c2dfde3.js\",\"2691:static/chunks/2691-6a6d100a2c34b785.js\",\"7821:static/chunks/7821-c003161c8ceb8dc0.js\",\"2407:static/chunks/2407-812e566289592756.js\",\"1203:static/chunks/1203-89fee94339d35b7d.js\",\"1385:static/chunks/1385-fc566d55117e6451.js\",\"4872:static/chunks/4872-5838c230dbd08087.js\",\"5718:static/chunks/5718-42c0e2485142dc4d.js\",\"783:static/chunks/783-59112894c3163b24.js\",\"1918:static/chunks/1918-73ddfad315654e6e.js\",\"3810:static/chunks/3810-a043a6ac63fdf38e.js\",\"8771:static/chunks/8771-fa1834e7152d7da4.js\",\"5906:static/chunks/5906-2309a5558ba513b6.js\",\"3297:static/chunks/3297-42389e4cb4840e6d.js\",\"6284:static/chunks/6284-a64b37999c9931dc.js\",\"6780:static/chunks/6780-0027b32d5435ac8d.js\",\"2042:static/chunks/2042-a9f7e86ffab6f390.js\",\"9734:static/chunks/9734-83cf7dc01b2773f5.js\",\"6767:static/chunks/6767-dc40dea334076681.js\",\"8167:static/chunks/8167-6f39a86c212ce012.js\",\"8057:static/chunks/8057-fe6c59a99b4294eb.js\",\"2386:static/chunks/2386-5a7623a5db586262.js\",\"598:static/chunks/598-daee7a6bbdafb8f2.js\",\"5036:static/chunks/5036-cb0eb256d5439627.js\",\"7315:static/chunks/7315-76123bcf4e134fa3.js\",\"7868:static/chunks/7868-3668c8b38a1da831.js\",\"3185:static/chunks/app/layout-c37a2c58ecc4dc67.js\"],\"name\":\"Navbar\",\"async\":false}\n"])
+        </script>
+        <script>
+            self.__next_f.push([1, "9:I{\"id\":10805,\"chunks\":[\"2272:static/chunks/webpack-6d59c264c8692b85.js\",\"6756:static/chunks/fab3b7d6-2de1731afed4db3f.js\",\"6794:static/chunks/6794-ecea2ee4450cef7b.js\"],\"name\":\"\",\"async\":false}\na:I{\"id\":6590,\"chunks\":[\"2272:static/chunks/webpack-6d59c264c8692b85.js\",\"6756:static/chunks/fab3b7d6-2de1731afed4db3f.js\",\"6794:static/chunks/6794-ecea2ee4450cef7b.js\"],\"name\":\"\",\"async\":false}\n"])
+        </script>
+        <script>
+            self.__next_f.push([1, "d:I{\"id\":12391,\"chunks\":[\"8259:static/chunks/5e4f61c8-e1b88f1d92497853.js\",\"5164:static/chunks/41bd06d0-60d922364b29a395.js\",\"2816:static/chunks/c2a1a299-6a0b8c7cff44c70f.js\",\"25:static/chunks/25-245146478164138f.js\",\"5141:static/chunks/5141-bd4f81697c2dfde3.js\",\"2691:static/chunks/2691-6a6d100a2c34b785.js\",\"7821:static/chunks/7821-c003161c8ceb8dc0.js\",\"2407:static/chunks/2407-812e566289592756.js\",\"1203:static/chunks/1203-89fee94339d35b7d.js\",\"1385:static/chunks/1385-fc566d55117e6451.js\",\"4872:static/chunks/4872-5838c230dbd08087.js\",\"5718:static/chunks/5718-42c0e2485142dc4d.js\",\"783:static/chunks/783-59112894c3163b24.js\",\"1918:static/chunks/1918-73ddfad315654e6e.js\",\"3810:static/chunks/3810-a043a6ac63fdf38e.js\",\"8771:static/chunks/8771-fa1834e7152d7da4.js\",\"5906:static/chunks/5906-2309a5558ba513b6.js\",\"3297:static/chunks/3297-42389e4cb4840e6d.js\",\"6284:static/chunks/6284-a64b37999c9931dc.js\",\"6780:static/chunks/6780-0027b32d5435ac8d.js\",\"2042:static/chunks/2042-a9f7e86ffab6f390.js\",\"9734:static/chunks/9734-83cf7dc01b2773f5.js\",\"6767:static/chunks/6767-dc40dea334076681.js\",\"8167:static/chunks/8167-6f39a86c212ce012.js\",\"8057:static/chunks/8057-fe6c59a99b4294eb.js\",\"2386:static/chunks/2386-5a7623a5db586262.js\",\"598:static/chunks/598-daee7a6bbdafb8f2.js\",\"5036:static/chunks/5036-cb0eb256d5439627.js\",\"7315:static/chunks/7315-76123bcf4e134fa3.js\",\"7868:static/chunks/7868-3668c8b38a1da831.js\",\"3185:static/chunks/app/layout-c37a2c58ecc4dc67.js\"],\"name\":\"Footer\",\"async\":false}\n"])
+        </script>
+        <script>
+            self.__next_f.push([1, "e:I{\"id\":88551,\"chunks\":[\"8259:static/chunks/5e4f61c8-e1b88f1d92497853.js\",\"5164:static/chunks/41bd06d0-60d922364b29a395.js\",\"2816:static/chunks/c2a1a299-6a0b8c7cff44c70f.js\",\"25:static/chunks/25-245146478164138f.js\",\"5141:static/chunks/5141-bd4f81697c2dfde3.js\",\"2691:static/chunks/2691-6a6d100a2c34b785.js\",\"7821:static/chunks/7821-c003161c8ceb8dc0.js\",\"2407:static/chunks/2407-812e566289592756.js\",\"1203:static/chunks/1203-89fee94339d35b7d.js\",\"1385:static/chunks/1385-fc566d55117e6451.js\",\"4872:static/chunks/4872-5838c230dbd08087.js\",\"5718:static/chunks/5718-42c0e2485142dc4d.js\",\"783:static/chunks/783-59112894c3163b24.js\",\"1918:static/chunks/1918-73ddfad315654e6e.js\",\"3810:static/chunks/3810-a043a6ac63fdf38e.js\",\"8771:static/chunks/8771-fa1834e7152d7da4.js\",\"5906:static/chunks/5906-2309a5558ba513b6.js\",\"3297:static/chunks/3297-42389e4cb4840e6d.js\",\"6284:static/chunks/6284-a64b37999c9931dc.js\",\"6780:static/chunks/6780-0027b32d5435ac8d.js\",\"2042:static/chunks/2042-a9f7e86ffab6f390.js\",\"9734:static/chunks/9734-83cf7dc01b2773f5.js\",\"6767:static/chunks/6767-dc40dea334076681.js\",\"8167:static/chunks/8167-6f39a86c212ce012.js\",\"8057:static/chunks/8057-fe6c59a99b4294eb.js\",\"2386:static/chunks/2386-5a7623a5db586262.js\",\"598:static/chunks/598-daee7a6bbdafb8f2.js\",\"5036:static/chunks/5036-cb0eb256d5439627.js\",\"7315:static/chunks/7315-76123bcf4e134fa3.js\",\"7868:static/chunks/7868-3668c8b38a1da831.js\",\"3185:static/chunks/app/layout-c37a2c58ecc4dc67.js\"],\"name\":\"Cmdk\",\"async\":false}\n"])
+        </script>
+        <script>
+            self.__next_f.push([1, "f:I{\"id\":67879,\"chunks\":[\"8259:static/chunks/5e4f61c8-e1b88f1d92497853.js\",\"5164:static/chunks/41bd06d0-60d922364b29a395.js\",\"2816:static/chunks/c2a1a299-6a0b8c7cff44c70f.js\",\"25:static/chunks/25-245146478164138f.js\",\"5141:static/chunks/5141-bd4f81697c2dfde3.js\",\"2691:static/chunks/2691-6a6d100a2c34b785.js\",\"7821:static/chunks/7821-c003161c8ceb8dc0.js\",\"2407:static/chunks/2407-812e566289592756.js\",\"1203:static/chunks/1203-89fee94339d35b7d.js\",\"1385:static/chunks/1385-fc566d55117e6451.js\",\"4872:static/chunks/4872-5838c230dbd08087.js\",\"5718:static/chunks/5718-42c0e2485142dc4d.js\",\"783:static/chunks/783-59112894c3163b24.js\",\"1918:static/chunks/1918-73ddfad315654e6e.js\",\"3810:static/chunks/3810-a043a6ac63fdf38e.js\",\"8771:static/chunks/8771-fa1834e7152d7da4.js\",\"5906:static/chunks/5906-2309a5558ba513b6.js\",\"3297:static/chunks/3297-42389e4cb4840e6d.js\",\"6284:static/chunks/6284-a64b37999c9931dc.js\",\"6780:static/chunks/6780-0027b32d5435ac8d.js\",\"2042:static/chunks/2042-a9f7e86ffab6f390.js\",\"9734:static/chunks/9734-83cf7dc01b2773f5.js\",\"6767:static/chunks/6767-dc40dea334076681.js\",\"8167:static/chunks/8167-6f39a86c212ce012.js\",\"8057:static/chunks/8057-fe6c59a99b4294eb.js\",\"2386:static/chunks/2386-5a7623a5db586262.js\",\"598:static/chunks/598-daee7a6bbdafb8f2.js\",\"5036:static/chunks/5036-cb0eb256d5439627.js\",\"7315:static/chunks/7315-76123bcf4e134fa3.js\",\"7868:static/chunks/7868-3668c8b38a1da831.js\",\"3185:static/chunks/app/layout-c37a2c58ecc4dc67.js\"],\"name\":\"Analytics\",\"async\":false}\n"])
+        </script>
+       
+        <script>
+            self.__next_f.push([1, "10:I{\"id\":62737,\"chunks\":[\"8259:static/chunks/5e4f61c8-e1b88f1d92497853.js\",\"5164:static/chunks/41bd06d0-60d922364b29a395.js\",\"2816:static/chunks/c2a1a299-6a0b8c7cff44c70f.js\",\"25:static/chunks/25-245146478164138f.js\",\"5141:static/chunks/5141-bd4f81697c2dfde3.js\",\"2691:static/chunks/2691-6a6d100a2c34b785.js\",\"7821:static/chunks/7821-c003161c8ceb8dc0.js\",\"2407:static/chunks/2407-812e566289592756.js\",\"1203:static/chunks/1203-89fee94339d35b7d.js\",\"1385:static/chunks/1385-fc566d55117e6451.js\",\"4872:static/chunks/4872-5838c230dbd08087.js\",\"5718:static/chunks/5718-42c0e2485142dc4d.js\",\"783:static/chunks/783-59112894c3163b24.js\",\"1918:static/chunks/1918-73ddfad315654e6e.js\",\"3810:static/chunks/3810-a043a6ac63fdf38e.js\",\"8771:static/chunks/8771-fa1834e7152d7da4.js\",\"5906:static/chunks/5906-2309a5558ba513b6.js\",\"6780:static/chunks/6780-0027b32d5435ac8d.js\",\"2042:static/chunks/2042-a9f7e86ffab6f390.js\",\"9734:static/chunks/9734-83cf7dc01b2773f5.js\",\"6767:static/chunks/6767-dc40dea334076681.js\",\"8167:static/chunks/8167-6f39a86c212ce012.js\",\"4879:static/chunks/4879-a70dcd57ba5b3e8a.js\",\"8057:static/chunks/8057-fe6c59a99b4294eb.js\",\"2386:static/chunks/2386-5a7623a5db586262.js\",\"598:static/chunks/598-daee7a6bbdafb8f2.js\",\"5036:static/chunks/5036-cb0eb256d5439627.js\",\"7315:static/chunks/7315-76123bcf4e134fa3.js\",\"7868:static/chunks/7868-3668c8b38a1da831.js\",\"1931:static/chunks/app/page-a3751af803e8f862.js\"],\"name\":\"Hero\",\"async\":false}\n"])
+        </script>
+        <script>
+            self.__next_f.push([1, "11:I{\"id\":72774,\"chunks\":[\"8259:static/chunks/5e4f61c8-e1b88f1d92497853.js\",\"5164:static/chunks/41bd06d0-60d922364b29a395.js\",\"2816:static/chunks/c2a1a299-6a0b8c7cff44c70f.js\",\"25:static/chunks/25-245146478164138f.js\",\"5141:static/chunks/5141-bd4f81697c2dfde3.js\",\"2691:static/chunks/2691-6a6d100a2c34b785.js\",\"7821:static/chunks/7821-c003161c8ceb8dc0.js\",\"2407:static/chunks/2407-812e566289592756.js\",\"1203:static/chunks/1203-89fee94339d35b7d.js\",\"1385:static/chunks/1385-fc566d55117e6451.js\",\"4872:static/chunks/4872-5838c230dbd08087.js\",\"5718:static/chunks/5718-42c0e2485142dc4d.js\",\"783:static/chunks/783-59112894c3163b24.js\",\"1918:static/chunks/1918-73ddfad315654e6e.js\",\"3810:static/chunks/3810-a043a6ac63fdf38e.js\",\"8771:static/chunks/8771-fa1834e7152d7da4.js\",\"5906:static/chunks/5906-2309a5558ba513b6.js\",\"6780:static/chunks/6780-0027b32d5435ac8d.js\",\"2042:static/chunks/2042-a9f7e86ffab6f390.js\",\"9734:static/chunks/9734-83cf7dc01b2773f5.js\",\"6767:static/chunks/6767-dc40dea334076681.js\",\"8167:static/chunks/8167-6f39a86c212ce012.js\",\"4879:static/chunks/4879-a70dcd57ba5b3e8a.js\",\"8057:static/chunks/8057-fe6c59a99b4294eb.js\",\"2386:static/chunks/2386-5a7623a5db586262.js\",\"598:static/chunks/598-daee7a6bbdafb8f2.js\",\"5036:static/chunks/5036-cb0eb256d5439627.js\",\"7315:static/chunks/7315-76123bcf4e134fa3.js\",\"7868:static/chunks/7868-3668c8b38a1da831.js\",\"1931:static/chunks/app/page-a3751af803e8f862.js\"],\"name\":\"FeaturesGrid\",\"async\":false}\n"])
+        </script>
+        <script>
+            self.__next_f.push([1, "12:I{\"id\":64664,\"chunks\":[\"8259:static/chunks/5e4f61c8-e1b88f1d92497853.js\",\"5164:static/chunks/41bd06d0-60d922364b29a395.js\",\"2816:static/chunks/c2a1a299-6a0b8c7cff44c70f.js\",\"25:static/chunks/25-245146478164138f.js\",\"5141:static/chunks/5141-bd4f81697c2dfde3.js\",\"2691:static/chunks/2691-6a6d100a2c34b785.js\",\"7821:static/chunks/7821-c003161c8ceb8dc0.js\",\"2407:static/chunks/2407-812e566289592756.js\",\"1203:static/chunks/1203-89fee94339d35b7d.js\",\"1385:static/chunks/1385-fc566d55117e6451.js\",\"4872:static/chunks/4872-5838c230dbd08087.js\",\"5718:static/chunks/5718-42c0e2485142dc4d.js\",\"783:static/chunks/783-59112894c3163b24.js\",\"1918:static/chunks/1918-73ddfad315654e6e.js\",\"3810:static/chunks/3810-a043a6ac63fdf38e.js\",\"8771:static/chunks/8771-fa1834e7152d7da4.js\",\"5906:static/chunks/5906-2309a5558ba513b6.js\",\"6780:static/chunks/6780-0027b32d5435ac8d.js\",\"2042:static/chunks/2042-a9f7e86ffab6f390.js\",\"9734:static/chunks/9734-83cf7dc01b2773f5.js\",\"6767:static/chunks/6767-dc40dea334076681.js\",\"8167:static/chunks/8167-6f39a86c212ce012.js\",\"4879:static/chunks/4879-a70dcd57ba5b3e8a.js\",\"8057:static/chunks/8057-fe6c59a99b4294eb.js\",\"2386:static/chunks/2386-5a7623a5db586262.js\",\"598:static/chunks/598-daee7a6bbdafb8f2.js\",\"5036:static/chunks/5036-cb0eb256d5439627.js\",\"7315:static/chunks/7315-76123bcf4e134fa3.js\",\"7868:static/chunks/7868-3668c8b38a1da831.js\",\"1931:static/chunks/app/page-a3751af803e8f862.js\"],\"name\":\"CustomThemes\",\"async\":false}\n"])
+        </script>
+        <script>
+            self.__next_f.push([1, "13:I{\"id\":406,\"chunks\":[\"8259:static/chunks/5e4f61c8-e1b88f1d92497853.js\",\"5164:static/chunks/41bd06d0-60d922364b29a395.js\",\"2816:static/chunks/c2a1a299-6a0b8c7cff44c70f.js\",\"25:static/chunks/25-245146478164138f.js\",\"5141:static/chunks/5141-bd4f81697c2dfde3.js\",\"2691:static/chunks/2691-6a6d100a2c34b785.js\",\"7821:static/chunks/7821-c003161c8ceb8dc0.js\",\"2407:static/chunks/2407-812e566289592756.js\",\"1203:static/chunks/1203-89fee94339d35b7d.js\",\"1385:static/chunks/1385-fc566d55117e6451.js\",\"4872:static/chunks/4872-5838c230dbd08087.js\",\"5718:static/chunks/5718-42c0e2485142dc4d.js\",\"783:static/chunks/783-59112894c3163b24.js\",\"1918:static/chunks/1918-73ddfad315654e6e.js\",\"3810:static/chunks/3810-a043a6ac63fdf38e.js\",\"8771:static/chunks/8771-fa1834e7152d7da4.js\",\"5906:static/chunks/5906-2309a5558ba513b6.js\",\"6780:static/chunks/6780-0027b32d5435ac8d.js\",\"2042:static/chunks/2042-a9f7e86ffab6f390.js\",\"9734:static/chunks/9734-83cf7dc01b2773f5.js\",\"6767:static/chunks/6767-dc40dea334076681.js\",\"8167:static/chunks/8167-6f39a86c212ce012.js\",\"4879:static/chunks/4879-a70dcd57ba5b3e8a.js\",\"8057:static/chunks/8057-fe6c59a99b4294eb.js\",\"2386:static/chunks/2386-5a7623a5db586262.js\",\"598:static/chunks/598-daee7a6bbdafb8f2.js\",\"5036:static/chunks/5036-cb0eb256d5439627.js\",\"7315:static/chunks/7315-76123bcf4e134fa3.js\",\"7868:static/chunks/7868-3668c8b38a1da831.js\",\"1931:static/chunks/app/page-a3751af803e8f862.js\"],\"name\":\"A11yOtb\",\"async\":false}\n"])
+        </script>
+        <script>
+            self.__next_f.push([1, "14:I{\"id\":85486,\"chunks\":[\"8259:static/chunks/5e4f61c8-e1b88f1d92497853.js\",\"5164:static/chunks/41bd06d0-60d922364b29a395.js\",\"2816:static/chunks/c2a1a299-6a0b8c7cff44c70f.js\",\"25:static/chunks/25-245146478164138f.js\",\"5141:static/chunks/5141-bd4f81697c2dfde3.js\",\"2691:static/chunks/2691-6a6d100a2c34b785.js\",\"7821:static/chunks/7821-c003161c8ceb8dc0.js\",\"2407:static/chunks/2407-812e566289592756.js\",\"1203:static/chunks/1203-89fee94339d35b7d.js\",\"1385:static/chunks/1385-fc566d55117e6451.js\",\"4872:static/chunks/4872-5838c230dbd08087.js\",\"5718:static/chunks/5718-42c0e2485142dc4d.js\",\"783:static/chunks/783-59112894c3163b24.js\",\"1918:static/chunks/1918-73ddfad315654e6e.js\",\"3810:static/chunks/3810-a043a6ac63fdf38e.js\",\"8771:static/chunks/8771-fa1834e7152d7da4.js\",\"5906:static/chunks/5906-2309a5558ba513b6.js\",\"6780:static/chunks/6780-0027b32d5435ac8d.js\",\"2042:static/chunks/2042-a9f7e86ffab6f390.js\",\"9734:static/chunks/9734-83cf7dc01b2773f5.js\",\"6767:static/chunks/6767-dc40dea334076681.js\",\"8167:static/chunks/8167-6f39a86c212ce012.js\",\"4879:static/chunks/4879-a70dcd57ba5b3e8a.js\",\"8057:static/chunks/8057-fe6c59a99b4294eb.js\",\"2386:static/chunks/2386-5a7623a5db586262.js\",\"598:static/chunks/598-daee7a6bbdafb8f2.js\",\"5036:static/chunks/5036-cb0eb256d5439627.js\",\"7315:static/chunks/7315-76123bcf4e134fa3.js\",\"7868:static/chunks/7868-3668c8b38a1da831.js\",\"1931:static/chunks/app/page-a3751af803e8f862.js\"],\"name\":\"DarkMode\",\"async\":false}\n"])
+        </script>
+        <script>
+            self.__next_f.push([1, "15:I{\"id\":69140,\"chunks\":[\"8259:static/chunks/5e4f61c8-e1b88f1d92497853.js\",\"5164:static/chunks/41bd06d0-60d922364b29a395.js\",\"2816:static/chunks/c2a1a299-6a0b8c7cff44c70f.js\",\"25:static/chunks/25-245146478164138f.js\",\"5141:static/chunks/5141-bd4f81697c2dfde3.js\",\"2691:static/chunks/2691-6a6d100a2c34b785.js\",\"7821:static/chunks/7821-c003161c8ceb8dc0.js\",\"2407:static/chunks/2407-812e566289592756.js\",\"1203:static/chunks/1203-89fee94339d35b7d.js\",\"1385:static/chunks/1385-fc566d55117e6451.js\",\"4872:static/chunks/4872-5838c230dbd08087.js\",\"5718:static/chunks/5718-42c0e2485142dc4d.js\",\"783:static/chunks/783-59112894c3163b24.js\",\"1918:static/chunks/1918-73ddfad315654e6e.js\",\"3810:static/chunks/3810-a043a6ac63fdf38e.js\",\"8771:static/chunks/8771-fa1834e7152d7da4.js\",\"5906:static/chunks/5906-2309a5558ba513b6.js\",\"6780:static/chunks/6780-0027b32d5435ac8d.js\",\"2042:static/chunks/2042-a9f7e86ffab6f390.js\",\"9734:static/chunks/9734-83cf7dc01b2773f5.js\",\"6767:static/chunks/6767-dc40dea334076681.js\",\"8167:static/chunks/8167-6f39a86c212ce012.js\",\"4879:static/chunks/4879-a70dcd57ba5b3e8a.js\",\"8057:static/chunks/8057-fe6c59a99b4294eb.js\",\"2386:static/chunks/2386-5a7623a5db586262.js\",\"598:static/chunks/598-daee7a6bbdafb8f2.js\",\"5036:static/chunks/5036-cb0eb256d5439627.js\",\"7315:static/chunks/7315-76123bcf4e134fa3.js\",\"7868:static/chunks/7868-3668c8b38a1da831.js\",\"1931:static/chunks/app/page-a3751af803e8f862.js\"],\"name\":\"Customization\",\"async\":false}\n"])
+        </script>
+        <script>
+            self.__next_f.push([1, "16:I{\"id\":27315,\"chunks\":[\"8259:static/chunks/5e4f61c8-e1b88f1d92497853.js\",\"5164:static/chunks/41bd06d0-60d922364b29a395.js\",\"2816:static/chunks/c2a1a299-6a0b8c7cff44c70f.js\",\"25:static/chunks/25-245146478164138f.js\",\"5141:static/chunks/5141-bd4f81697c2dfde3.js\",\"2691:static/chunks/2691-6a6d100a2c34b785.js\",\"7821:static/chunks/7821-c003161c8ceb8dc0.js\",\"2407:static/chunks/2407-812e566289592756.js\",\"1203:static/chunks/1203-89fee94339d35b7d.js\",\"1385:static/chunks/1385-fc566d55117e6451.js\",\"4872:static/chunks/4872-5838c230dbd08087.js\",\"5718:static/chunks/5718-42c0e2485142dc4d.js\",\"783:static/chunks/783-59112894c3163b24.js\",\"1918:static/chunks/1918-73ddfad315654e6e.js\",\"3810:static/chunks/3810-a043a6ac63fdf38e.js\",\"8771:static/chunks/8771-fa1834e7152d7da4.js\",\"5906:static/chunks/5906-2309a5558ba513b6.js\",\"6780:static/chunks/6780-0027b32d5435ac8d.js\",\"2042:static/chunks/2042-a9f7e86ffab6f390.js\",\"9734:static/chunks/9734-83cf7dc01b2773f5.js\",\"6767:static/chunks/6767-dc40dea334076681.js\",\"8167:static/chunks/8167-6f39a86c212ce012.js\",\"4879:static/chunks/4879-a70dcd57ba5b3e8a.js\",\"8057:static/chunks/8057-fe6c59a99b4294eb.js\",\"2386:static/chunks/2386-5a7623a5db586262.js\",\"598:static/chunks/598-daee7a6bbdafb8f2.js\",\"5036:static/chunks/5036-cb0eb256d5439627.js\",\"7315:static/chunks/7315-76123bcf4e134fa3.js\",\"7868:static/chunks/7868-3668c8b38a1da831.js\",\"1931:static/chunks/app/page-a3751af803e8f862.js\"],\"name\":\"Code\",\"async\":false}\n"])
+        </script>
+        <script>
+            self.__next_f.push([1, "17:I{\"id\":25978,\"chunks\":[\"8259:static/chunks/5e4f61c8-e1b88f1d92497853.js\",\"5164:static/chunks/41bd06d0-60d922364b29a395.js\",\"2816:static/chunks/c2a1a299-6a0b8c7cff44c70f.js\",\"25:static/chunks/25-245146478164138f.js\",\"5141:static/chunks/5141-bd4f81697c2dfde3.js\",\"2691:static/chunks/2691-6a6d100a2c34b785.js\",\"7821:static/chunks/7821-c003161c8ceb8dc0.js\",\"2407:static/chunks/2407-812e566289592756.js\",\"1203:static/chunks/1203-89fee94339d35b7d.js\",\"1385:static/chunks/1385-fc566d55117e6451.js\",\"4872:static/chunks/4872-5838c230dbd08087.js\",\"5718:static/chunks/5718-42c0e2485142dc4d.js\",\"783:static/chunks/783-59112894c3163b24.js\",\"1918:static/chunks/1918-73ddfad315654e6e.js\",\"3810:static/chunks/3810-a043a6ac63fdf38e.js\",\"8771:static/chunks/8771-fa1834e7152d7da4.js\",\"5906:static/chunks/5906-2309a5558ba513b6.js\",\"6780:static/chunks/6780-0027b32d5435ac8d.js\",\"2042:static/chunks/2042-a9f7e86ffab6f390.js\",\"9734:static/chunks/9734-83cf7dc01b2773f5.js\",\"6767:static/chunks/6767-dc40dea334076681.js\",\"8167:static/chunks/8167-6f39a86c212ce012.js\",\"4879:static/chunks/4879-a70dcd57ba5b3e8a.js\",\"8057:static/chunks/8057-fe6c59a99b4294eb.js\",\"2386:static/chunks/2386-5a7623a5db586262.js\",\"598:static/chunks/598-daee7a6bbdafb8f2.js\",\"5036:static/chunks/5036-cb0eb256d5439627.js\",\"7315:static/chunks/7315-76123bcf4e134fa3.js\",\"7868:static/chunks/7868-3668c8b38a1da831.js\",\"1931:static/chunks/app/page-a3751af803e8f862.js\"],\"name\":\"Support\",\"async\":false}\n"])
+        </script>
+        <script>
+            self.__next_f.push([1, "18:I{\"id\":59573,\"chunks\":[\"8259:static/chunks/5e4f61c8-e1b88f1d92497853.js\",\"5164:static/chunks/41bd06d0-60d922364b29a395.js\",\"2816:static/chunks/c2a1a299-6a0b8c7cff44c70f.js\",\"25:static/chunks/25-245146478164138f.js\",\"5141:static/chunks/5141-bd4f81697c2dfde3.js\",\"2691:static/chunks/2691-6a6d100a2c34b785.js\",\"7821:static/chunks/7821-c003161c8ceb8dc0.js\",\"2407:static/chunks/2407-812e566289592756.js\",\"1203:static/chunks/1203-89fee94339d35b7d.js\",\"1385:static/chunks/1385-fc566d55117e6451.js\",\"4872:static/chunks/4872-5838c230dbd08087.js\",\"5718:static/chunks/5718-42c0e2485142dc4d.js\",\"783:static/chunks/783-59112894c3163b24.js\",\"1918:static/chunks/1918-73ddfad315654e6e.js\",\"3810:static/chunks/3810-a043a6ac63fdf38e.js\",\"8771:static/chunks/8771-fa1834e7152d7da4.js\",\"5906:static/chunks/5906-2309a5558ba513b6.js\",\"6780:static/chunks/6780-0027b32d5435ac8d.js\",\"2042:static/chunks/2042-a9f7e86ffab6f390.js\",\"9734:static/chunks/9734-83cf7dc01b2773f5.js\",\"6767:static/chunks/6767-dc40dea334076681.js\",\"8167:static/chunks/8167-6f39a86c212ce012.js\",\"4879:static/chunks/4879-a70dcd57ba5b3e8a.js\",\"8057:static/chunks/8057-fe6c59a99b4294eb.js\",\"2386:static/chunks/2386-5a7623a5db586262.js\",\"598:static/chunks/598-daee7a6bbdafb8f2.js\",\"5036:static/chunks/5036-cb0eb256d5439627.js\",\"7315:static/chunks/7315-76123bcf4e134fa3.js\",\"7868:static/chunks/7868-3668c8b38a1da831.js\",\"1931:static/chunks/app/page-a3751af803e8f862.js\"],\"name\":\"InstallBanner\",\"async\":false}\n"])
+        </script>
+        <script>
+            self.__next_f.push([1, "19:I{\"id\":27315,\"chunks\":[\"8259:static/chunks/5e4f61c8-e1b88f1d92497853.js\",\"5164:static/chunks/41bd06d0-60d922364b29a395.js\",\"2816:static/chunks/c2a1a299-6a0b8c7cff44c70f.js\",\"25:static/chunks/25-245146478164138f.js\",\"5141:static/chunks/5141-bd4f81697c2dfde3.js\",\"2691:static/chunks/2691-6a6d100a2c34b785.js\",\"7821:static/chunks/7821-c003161c8ceb8dc0.js\",\"2407:static/chunks/2407-812e566289592756.js\",\"1203:static/chunks/1203-89fee94339d35b7d.js\",\"1385:static/chunks/1385-fc566d55117e6451.js\",\"4872:static/chunks/4872-5838c230dbd08087.js\",\"5718:static/chunks/5718-42c0e2485142dc4d.js\",\"783:static/chunks/783-59112894c3163b24.js\",\"1918:static/chunks/1918-73ddfad315654e6e.js\",\"3810:static/chunks/3810-a043a6ac63fdf38e.js\",\"8771:static/chunks/8771-fa1834e7152d7da4.js\",\"5906:static/chunks/5906-2309a5558ba513b6.js\",\"6780:static/chunks/6780-0027b32d5435ac8d.js\",\"2042:static/chunks/2042-a9f7e86ffab6f390.js\",\"9734:static/chunks/9734-83cf7dc01b2773f5.js\",\"6767:static/chunks/6767-dc40dea334076681.js\",\"8167:static/chunks/8167-6f39a86c212ce012.js\",\"4879:static/chunks/4879-a70dcd57ba5b3e8a.js\",\"8057:static/chunks/8057-fe6c59a99b4294eb.js\",\"2386:static/chunks/2386-5a7623a5db586262.js\",\"598:static/chunks/598-daee7a6bbdafb8f2.js\",\"5036:static/chunks/5036-cb0eb256d5439627.js\",\"7315:static/chunks/7315-76123bcf4e134fa3.js\",\"7868:static/chunks/7868-3668c8b38a1da831.js\",\"1931:static/chunks/app/page-a3751af803e8f862.js\"],\"name\":\"Spacer\",\"async\":false}\n"])
+        </script>
+        <script>
+            self.__next_f.push([1, "c:[\"$\",\"main\",null,{\"className\":\"container mx-auto max-w-7xl px-6 flex-grow\",\"children\":[\"$\",\"section\",null,{\"className\":\"flex flex-col items-center justify-center\",\"children\":[[\"$\",\"$L10\",null,{}],[\"$\",\"$L11\",null,{\"features\":[{\"title\":\"Themeable\",\"description\":\"Provides a plugin to customize default themes, you can change all semantic tokens or create an entire new theme.\",\"icon\":[\"$\",\"svg\",null,{\"aria-hidden\":\"true\",\"fill\":\"none\",\"focusable\":\"false\",\"height\":24,\"role\":\"presentation\",\"viewBox\":\"0 0 24 24\",\"width\":24,\"className\":\"text-pink-500\",\"children\":[[\"$\",\"path\",null,{\"d\":\"M3.5 20.5c.83.83 2.17.83 3 0l13-13c.83-.83.83-2.17 0-3-.83-.83-2.17-.83-3 0l-13 13c-.83.83-.83 2.17 0 3ZM18.01 8.99l-3-3\",\"stroke\":\"currentColor\",\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"strokeWidth\":1.5}],[\"$\",\"path\",null,{\"d\":\"M8.5 2.44 10 2l-.44 1.5L10 5l-1.5-.44L7 5l.44-1.5L7 2l1.5.44ZM4.5 8.44 6 8l-.44 1.5L6 11l-1.5-.44L3 11l.44-1.5L3 8l1.5.44ZM19.5 13.44 21 13l-.44 1.5L21 16l-1.5-.44L18 16l.44-1.5L18 13l1.5.44Z\",\"stroke\":\"currentColor\",\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\"}]]}]},{\"title\":\"Fast\",\"description\":\"Built on top of Tailwind CSS, which means no runtime styles, and no unnecessary classes in your bundle.\",\"icon\":[\"$\",\"svg\",null,{\"aria-hidden\":\"true\",\"fill\":\"none\",\"focusable\":\"false\",\"height\":24,\"role\":\"presentation\",\"viewBox\":\"0 0 24 24\",\"width\":24,\"className\":\"text-pink-500\",\"children\":[\"$\",\"path\",null,{\"d\":\"M6.09 13.28h3.09v7.2c0 1.68.91 2.02 2.02.76l7.57-8.6c.93-1.05.54-1.92-.87-1.92h-3.09v-7.2c0-1.68-.91-2.02-2.02-.76l-7.57 8.6c-.92 1.06-.53 1.92.87 1.92Z\",\"stroke\":\"currentColor\",\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"strokeMiterlimit\":10,\"strokeWidth\":1.5}]}]},{\"title\":\"Light \u0026 Dark UI\",\"description\":\"Automatic dark mode recognition, NextUI automatically changes the theme when detects HTML theme prop changes.\",\"icon\":[\"$\",\"svg\",null,{\"aria-hidden\":\"true\",\"focusable\":\"false\",\"height\":24,\"role\":\"presentation\",\"viewBox\":\"0 0 24 24\",\"width\":24,\"className\":\"text-pink-500\",\"children\":[\"$\",\"path\",null,{\"d\":\"M20.742,13.045c-0.677,0.18-1.376,0.271-2.077,0.271c-2.135,0-4.14-0.83-5.646-2.336c-2.008-2.008-2.799-4.967-2.064-7.723 c0.092-0.345-0.007-0.713-0.259-0.965C10.444,2.04,10.077,1.938,9.73,2.034C8.028,2.489,6.476,3.382,5.241,4.616 c-3.898,3.898-3.898,10.243,0,14.143c1.889,1.889,4.401,2.93,7.072,2.93c2.671,0,5.182-1.04,7.07-2.929 c1.236-1.237,2.13-2.791,2.583-4.491c0.092-0.345-0.008-0.713-0.26-0.965C21.454,13.051,21.085,12.951,20.742,13.045z M17.97,17.346c-1.511,1.511-3.52,2.343-5.656,2.343c-2.137,0-4.146-0.833-5.658-2.344c-3.118-3.119-3.118-8.195,0-11.314 c0.602-0.602,1.298-1.102,2.06-1.483c-0.222,2.885,0.814,5.772,2.89,7.848c2.068,2.069,4.927,3.12,7.848,2.891 C19.072,16.046,18.571,16.743,17.97,17.346z\",\"fill\":\"currentColor\"}]}]},{\"title\":\"Unique DX\",\"description\":\"NextUI is fully-typed to minimize the learning curve, and provide the best possible developer experience.\",\"icon\":[\"$\",\"svg\",null,{\"aria-hidden\":\"true\",\"fill\":\"none\",\"focusable\":\"false\",\"height\":24,\"role\":\"presentation\",\"viewBox\":\"0 0 24 24\",\"width\":24,\"className\":\"text-pink-500\",\"children\":[[\"$\",\"path\",null,{\"d\":\"M10 16.95H6.21c-3.37 0-4.21-.84-4.21-4.21v-6c0-3.37.84-4.21 4.21-4.21h10.53c3.37 0 4.21.84 4.21 4.21M10 21.47v-4.52M2 12.95h8M6.74 21.47H10\",\"stroke\":\"currentColor\",\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"strokeWidth\":1.5}],[\"$\",\"path\",null,{\"d\":\"M22 12.8v5.71c0 2.37-.59 2.96-2.96 2.96h-3.55c-2.37 0-2.96-.59-2.96-2.96V12.8c0-2.37.59-2.96 2.96-2.96h3.55c2.37 0 2.96.59 2.96 2.96Z\",\"stroke\":\"currentColor\",\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"strokeWidth\":1.5}],[\"$\",\"path\",null,{\"d\":\"M17.244 18.25h.01\",\"stroke\":\"currentColor\",\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"strokeWidth\":2}]]}]}]}],[\"$\",\"$L12\",null,{}],[\"$\",\"$L13\",null,{}],[\"$\",\"$L14\",null,{}],[\"$\",\"$L15\",null,{}],[\"$\",\"section\",null,{\"className\":\"relative z-10 flex flex-col gap-2 w-full mt-16 lg:mt-44\",\"children\":[\"$\",\"div\",null,{\"className\":\"flex flex-col gap-0 md:gap-8\",\"children\":[[\"$\",\"div\",null,{\"children\":[[\"$\",\"div\",null,{\"className\":\"flex flex-col gap-2 justify-center w-full items-center\",\"children\":[[\"$\",\"div\",null,{\"children\":[[\"$\",\"h1\",null,{\"className\":\"tracking-tight inline font-semibold text-4xl lg:text-6xl\",\"children\":\"Last \"}],[\"$\",\"h1\",null,{\"className\":\"tracking-tight inline font-semibold from-[#FF705B] to-[#FFB457] text-4xl lg:text-6xl bg-clip-text text-transparent bg-gradient-to-b\",\"children\":\"but\"}]]}],[\"$\",\"div\",null,{\"children\":[[\"$\",\"h1\",null,{\"className\":\"tracking-tight inline font-semibold text-4xl lg:text-6xl\",\"children\":\"not \"}],[\"$\",\"h1\",null,{\"className\":\"tracking-tight inline font-semibold from-[#FF72E1] to-[#F54C7A] text-4xl lg:text-6xl bg-clip-text text-transparent bg-gradient-to-b\",\"children\":\"least.\"}]]}]]}],[\"$\",\"p\",null,{\"className\":\"w-full my-2 text-lg lg:text-xl font-normal text-default-500 max-w-full mt-4 md:w-full text-center flex justify-center items-center\",\"children\":\"A fully-featured React UI library.\"}]]}],[\"$\",\"$L11\",null,{\"features\":[{\"title\":\"React server components\",\"description\":[\"All NextUI components already include the \",[\"$\",\"$L16\",null,{\"children\":\"\\\"use client\\\"\"}],\" directive, which means you can import and use them directly in your RSC.\"],\"icon\":[\"$\",\"svg\",null,{\"aria-hidden\":\"true\",\"fill\":\"none\",\"focusable\":\"false\",\"height\":24,\"role\":\"presentation\",\"viewBox\":\"0 0 24 24\",\"width\":24,\"className\":\"text-pink-500\",\"children\":[\"$\",\"path\",null,{\"d\":\"M19.32 10H4.69c-1.48 0-2.68-1.21-2.68-2.68V4.69c0-1.48 1.21-2.68 2.68-2.68h14.63C20.8 2.01 22 3.22 22 4.69v2.63C22 8.79 20.79 10 19.32 10ZM19.32 22H4.69c-1.48 0-2.68-1.21-2.68-2.68v-2.63c0-1.48 1.21-2.68 2.68-2.68h14.63c1.48 0 2.68 1.21 2.68 2.68v2.63c0 1.47-1.21 2.68-2.68 2.68ZM6 5v2M10 5v2M6 17v2M10 17v2M14 6h4M14 18h4\",\"stroke\":\"currentColor\",\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"strokeWidth\":1.5}]}]},{\"title\":\"Accessible components\",\"description\":\"NextUI components follow the WAI-ARIA guidelines, provide keyboard support and sensible focus management.\",\"icon\":[\"$\",\"svg\",null,{\"aria-hidden\":\"true\",\"fill\":\"none\",\"focusable\":\"false\",\"height\":24,\"role\":\"presentation\",\"viewBox\":\"0 0 24 24\",\"width\":24,\"className\":\"text-pink-500\",\"children\":[[\"$\",\"path\",null,{\"d\":\"M18 18.86h-.76c-.8 0-1.56.31-2.12.87l-1.71 1.69c-.78.77-2.05.77-2.83 0l-1.71-1.69c-.56-.56-1.33-.87-2.12-.87H6c-1.66 0-3-1.33-3-2.97V4.98c0-1.64 1.34-2.97 3-2.97h12c1.66 0 3 1.33 3 2.97v10.91c0 1.63-1.34 2.97-3 2.97Z\",\"stroke\":\"currentColor\",\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"strokeMiterlimit\":10,\"strokeWidth\":1.5}],[\"$\",\"path\",null,{\"d\":\"M12 10a2.33 2.33 0 1 0 0-4.66A2.33 2.33 0 0 0 12 10ZM16 15.66c0-1.8-1.79-3.26-4-3.26s-4 1.46-4 3.26\",\"stroke\":\"currentColor\",\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"strokeWidth\":1.5}]]}]},{\"title\":\"Focus interactions\",\"description\":\"Focus ring will appear only when user navigates with keyboard or screen reader.\",\"icon\":[\"$\",\"svg\",null,{\"aria-hidden\":\"true\",\"fill\":\"none\",\"focusable\":\"false\",\"height\":24,\"role\":\"presentation\",\"viewBox\":\"0 0 24 24\",\"width\":24,\"className\":\"text-pink-500\",\"children\":[[\"$\",\"path\",null,{\"d\":\"m20.96 17.84-1.63.55c-.45.15-.81.5-.96.96l-.55 1.63c-.47 1.41-2.45 1.38-2.89-.03L13.08 15c-.36-1.18.73-2.28 1.9-1.91l5.96 1.85c1.4.44 1.42 2.43.02 2.9Z\",\"stroke\":\"currentColor\",\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"strokeWidth\":1.5}],[\"$\",\"path\",null,{\"d\":\"M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12s4.48 10 10 10\",\"stroke\":\"currentColor\",\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"strokeWidth\":1.5}]]}]},{\"title\":\"Multiple packages\",\"description\":\"NextUI is divided into multiple packages, so you can install only the components you need.\",\"icon\":[\"$\",\"svg\",null,{\"aria-hidden\":\"true\",\"fill\":\"none\",\"focusable\":\"false\",\"height\":24,\"role\":\"presentation\",\"viewBox\":\"0 0 24 24\",\"width\":24,\"className\":\"text-pink-500\",\"children\":[[\"$\",\"path\",null,{\"d\":\"M22 15C22 18.87 18.87 22 15 22L16.05 20.25\",\"stroke\":\"currentColor\",\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"strokeWidth\":\"1.5\"}],[\"$\",\"path\",null,{\"d\":\"M2 9C2 5.13 5.13 2 9 2L7.95 3.75\",\"stroke\":\"currentColor\",\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"strokeWidth\":\"1.5\"}],[\"$\",\"path\",null,{\"d\":\"M13.7 4.44995L17.6799 6.74994L21.6199 4.45996\",\"stroke\":\"currentColor\",\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"strokeWidth\":\"1.5\"}],[\"$\",\"path\",null,{\"d\":\"M17.6799 10.82V6.73999\",\"stroke\":\"currentColor\",\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"strokeWidth\":\"1.5\"}],[\"$\",\"path\",null,{\"d\":\"M16.74 2.21L14.34 3.53996C13.8 3.83996 13.35 4.59995 13.35 5.21995V7.75999C13.35 8.37999 13.79 9.13998 14.34 9.43998L16.74 10.77C17.25 11.06 18.09 11.06 18.61 10.77L21.01 9.43998C21.55 9.13998 22 8.37999 22 7.75999V5.21995C22 4.59995 21.56 3.83996 21.01 3.53996L18.61 2.21C18.1 1.93 17.26 1.93 16.74 2.21Z\",\"stroke\":\"currentColor\",\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"strokeWidth\":\"1.5\"}],[\"$\",\"path\",null,{\"d\":\"M2.34998 15.45L6.31998 17.7499L10.27 15.46\",\"stroke\":\"currentColor\",\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"strokeWidth\":\"1.5\"}],[\"$\",\"path\",null,{\"d\":\"M6.31995 21.82V17.74\",\"stroke\":\"currentColor\",\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"strokeWidth\":\"1.5\"}],[\"$\",\"path\",null,{\"d\":\"M5.39 13.21L2.99001 14.54C2.45001 14.84 2 15.5999 2 16.2199V18.76C2 19.38 2.44001 20.14 2.99001 20.44L5.39 21.77C5.9 22.06 6.73999 22.06 7.25999 21.77L9.66 20.44C10.2 20.14 10.65 19.38 10.65 18.76V16.2199C10.65 15.5999 10.21 14.84 9.66 14.54L7.25999 13.21C6.73999 12.93 5.9 12.93 5.39 13.21Z\",\"stroke\":\"currentColor\",\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"strokeWidth\":\"1.5\"}]]}]},{\"title\":\"TypeScript based\",\"description\":\"Build type safe applications, NextUI has a fully-typed API to minimize the learning curve, and help you build applications.\",\"icon\":[\"$\",\"svg\",null,{\"aria-hidden\":\"true\",\"fill\":\"none\",\"focusable\":\"false\",\"height\":24,\"role\":\"presentation\",\"viewBox\":\"0 0 24 24\",\"width\":24,\"className\":\"text-pink-500\",\"children\":[[\"$\",\"path\",null,{\"d\":\"M21 7V17C21 20 19.5 22 16 22H8C4.5 22 3 20 3 17V7C3 4 4.5 2 8 2H16C19.5 2 21 4 21 7Z\",\"stroke\":\"currentColor\",\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"strokeMiterlimit\":\"10\",\"strokeWidth\":\"1.5\"}],[\"$\",\"path\",null,{\"d\":\"M14.5 4.5V6.5C14.5 7.6 15.4 8.5 16.5 8.5H18.5\",\"stroke\":\"currentColor\",\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"strokeMiterlimit\":\"10\",\"strokeWidth\":\"1.5\"}],[\"$\",\"path\",null,{\"d\":\"M10 13L8 15L10 17\",\"stroke\":\"currentColor\",\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"strokeMiterlimit\":\"10\",\"strokeWidth\":\"1.5\"}],[\"$\",\"path\",null,{\"d\":\"M14 13L16 15L14 17\",\"stroke\":\"currentColor\",\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"strokeMiterlimit\":\"10\",\"strokeWidth\":\"1.5\"}]]}]},{\"title\":\"Override components tags\",\"description\":\"A polymorphic `as` prop is included in all NextUI components.\",\"icon\":[\"$\",\"svg\",null,{\"aria-hidden\":\"true\",\"fill\":\"none\",\"focusable\":\"false\",\"height\":24,\"role\":\"presentation\",\"viewBox\":\"0 0 24 24\",\"width\":24,\"className\":\"text-pink-500\",\"children\":[[\"$\",\"path\",null,{\"d\":\"M4.1 2h15.8c.6 0 1.1.5 1 1.1l-1.8 16.2c0 .4-.3.7-.7.9l-6.1 1.7c-.2.1-.4.1-.5 0l-6.1-1.7c-.4-.1-.7-.4-.7-.9L3.1 3.1c0-.6.4-1.1 1-1.1Z\",\"stroke\":\"currentColor\",\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"strokeMiterlimit\":10,\"strokeWidth\":1.5}],[\"$\",\"path\",null,{\"d\":\"M16.2 6.8H7.8l.4 4.4h7.6l-.6 5-3.4 1-3.6-1v-2\",\"stroke\":\"currentColor\",\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"strokeMiterlimit\":10,\"strokeWidth\":1.5}]]}]},{\"title\":\"No runtime styles\",\"description\":\"NextUI is based on Tailwind CSS, it means that there are no runtime styles, and no unnecessary classes in your bundle.\",\"icon\":[\"$\",\"svg\",null,{\"aria-hidden\":\"true\",\"fill\":\"none\",\"focusable\":\"false\",\"height\":24,\"role\":\"presentation\",\"viewBox\":\"0 0 24 24\",\"width\":24,\"className\":\"text-pink-500\",\"children\":[\"$\",\"path\",null,{\"d\":\"M6.09 13.28h3.09v7.2c0 1.68.91 2.02 2.02.76l7.57-8.6c.93-1.05.54-1.92-.87-1.92h-3.09v-7.2c0-1.68-.91-2.02-2.02-.76l-7.57 8.6c-.92 1.06-.53 1.92.87 1.92Z\",\"stroke\":\"currentColor\",\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"strokeMiterlimit\":10,\"strokeWidth\":1.5}]}]},{\"title\":\"Beautifully designed\",\"description\":\"NextUI components are unique and are not tied to any visual trend or design rule, which makes us unique and of course your projects as well.\",\"icon\":[\"$\",\"svg\",null,{\"aria-hidden\":\"true\",\"fill\":\"none\",\"focusable\":\"false\",\"height\":24,\"role\":\"presentation\",\"viewBox\":\"0 0 24 24\",\"width\":24,\"className\":\"text-pink-500\",\"children\":[[\"$\",\"path\",null,{\"d\":\"M3.5 20.5c.83.83 2.17.83 3 0l13-13c.83-.83.83-2.17 0-3-.83-.83-2.17-.83-3 0l-13 13c-.83.83-.83 2.17 0 3ZM18.01 8.99l-3-3\",\"stroke\":\"currentColor\",\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"strokeWidth\":1.5}],[\"$\",\"path\",null,{\"d\":\"M8.5 2.44 10 2l-.44 1.5L10 5l-1.5-.44L7 5l.44-1.5L7 2l1.5.44ZM4.5 8.44 6 8l-.44 1.5L6 11l-1.5-.44L3 11l.44-1.5L3 8l1.5.44ZM19.5 13.44 21 13l-.44 1.5L21 16l-1.5-.44L18 16l.44-1.5L18 13l1.5.44Z\",\"stroke\":\"currentColor\",\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\"}]]}]}]}]]}]}],[\"$\",\"$L17\",null,{\"sponsors\":[{\"MemberId\":275354,\"createdAt\":\"2022-02-18 11:57\",\"type\":\"USER\",\"role\":\"BACKER\",\"tier\":\"Backer 🖤\",\"isActive\":true,\"totalAmountDonated\":5,\"currency\":\"USD\",\"lastTransactionAt\":\"2022-02-18 11:57\",\"lastTransactionAmount\":5,\"profile\":\"https://opencollective.com/guest-7dc076fb\",\"name\":\"jorge\",\"company\":null,\"description\":null,\"image\":\"/sponsors/undefined\",\"email\":null,\"twitter\":null,\"github\":null,\"website\":null},{\"MemberId\":277819,\"createdAt\":\"2022-03-01 09:13\",\"type\":\"USER\",\"role\":\"BACKER\",\"isActive\":true,\"totalAmountDonated\":10,\"currency\":\"USD\",\"lastTransactionAt\":\"2022-03-01 09:13\",\"lastTransactionAmount\":10,\"profile\":\"https://opencollective.com/dhananjay-senday\",\"name\":\"Dhananjay Senday\",\"company\":null,\"description\":null,\"image\":\"/sponsors/undefined\",\"email\":null,\"twitter\":null,\"github\":null,\"website\":null},{\"MemberId\":292380,\"createdAt\":\"2022-04-22 07:47\",\"type\":\"USER\",\"role\":\"BACKER\",\"tier\":\"Backer 🖤\",\"isActive\":true,\"totalAmountDonated\":10,\"currency\":\"USD\",\"lastTransactionAt\":\"2022-04-22 07:47\",\"lastTransactionAmount\":10,\"profile\":\"https://opencollective.com/manuel5\",\"name\":\"manuel-rw\",\"company\":null,\"description\":null,\"image\":\"/sponsors/292380.jpg\",\"email\":null,\"twitter\":null,\"github\":null,\"website\":null},{\"MemberId\":327844,\"createdAt\":\"2022-08-26 21:32\",\"type\":\"ORGANIZATION\",\"role\":\"BACKER\",\"tier\":\"Gold Sponsor 🥇\",\"isActive\":true,\"totalAmountDonated\":200,\"currency\":\"USD\",\"lastTransactionAt\":\"2022-12-22 07:19\",\"lastTransactionAmount\":100,\"profile\":\"https://opencollective.com/lowdefy\",\"name\":\"Lowdefy\",\"company\":null,\"description\":\"Create custom web apps in minutes\",\"image\":\"/sponsors/327844.jpg\",\"twitter\":\"https://twitter.com/lowdefy\",\"github\":\"https://github.com/lowdefy\",\"website\":\"https://lowdefy.com\"},{\"MemberId\":347048,\"createdAt\":\"2022-10-30 06:25\",\"type\":\"USER\",\"role\":\"BACKER\",\"tier\":\"Backer 🖤\",\"isActive\":true,\"totalAmountDonated\":1,\"currency\":\"USD\",\"lastTransactionAt\":\"2022-10-30 06:25\",\"lastTransactionAmount\":1,\"profile\":\"https://opencollective.com/william-frank-monroy-mamani\",\"name\":\"William Frank Monroy Mamani\",\"company\":null,\"description\":null,\"image\":\"/sponsors/347048.jpg\",\"email\":null,\"twitter\":null,\"github\":null,\"website\":null},{\"MemberId\":374896,\"createdAt\":\"2022-12-22 05:28\",\"type\":\"ORGANIZATION\",\"role\":\"BACKER\",\"tier\":\"bronze sponsor 🥉\",\"isActive\":true,\"totalAmountDonated\":70,\"currency\":\"USD\",\"lastTransactionAt\":\"2023-07-02 09:04\",\"lastTransactionAmount\":10,\"profile\":\"https://opencollective.com/chartbrew\",\"name\":\"Chartbrew\",\"company\":null,\"description\":\"Open source visualization and reporting platform\",\"image\":\"/sponsors/374896.jpg\",\"twitter\":null,\"github\":null,\"website\":\"https://chartbrew.com\"},{\"MemberId\":375034,\"createdAt\":\"2022-12-22 13:16\",\"type\":\"USER\",\"role\":\"BACKER\",\"isActive\":true,\"totalAmountDonated\":50,\"currency\":\"USD\",\"lastTransactionAt\":\"2022-12-22 13:16\",\"lastTransactionAmount\":50,\"profile\":\"https://opencollective.com/jan-wagebach\",\"name\":\"PRISMA European Capacity Platform GmbH\",\"company\":\"PRISMA European Capacity Platform GmbH\",\"description\":null,\"image\":\"/sponsors/375034.jpg\",\"email\":null,\"twitter\":null,\"github\":null,\"website\":null},{\"MemberId\":395990,\"createdAt\":\"2023-02-11 13:12\",\"type\":\"ORGANIZATION\",\"role\":\"BACKER\",\"tier\":\"Gold Sponsor 🥇\",\"isActive\":true,\"totalAmountDonated\":100,\"currency\":\"USD\",\"lastTransactionAt\":\"2023-02-11 13:12\",\"lastTransactionAmount\":100,\"profile\":\"https://opencollective.com/likn\",\"name\":\"LIKN\",\"company\":null,\"description\":\"LIKN is a powerful, but simple Web3 component and protocol. Connect Web2 content to Web3, and solely mint content NFTs by URL. Share and Trade in different platforms and marketplaces. OpenAI empowers LIKN which can automatically generate NFT metadata. \",\"image\":\"/sponsors/395990.jpg\",\"twitter\":\"https://twitter.com/oxlikn\",\"github\":\"https://github.com/0xLIKN\",\"website\":\"https://www.likn.co/?ref=opencollective\"},{\"MemberId\":404415,\"createdAt\":\"2023-03-01 16:22\",\"type\":\"USER\",\"role\":\"BACKER\",\"tier\":\"Backer 🖤\",\"isActive\":true,\"totalAmountDonated\":1,\"currency\":\"USD\",\"lastTransactionAt\":\"2023-03-01 16:22\",\"lastTransactionAmount\":1,\"profile\":\"https://opencollective.com/rharison-lucas-moreira-abreu\",\"name\":\"Rharison Lucas Moreira Abreu\",\"company\":null,\"description\":null,\"image\":\"/sponsors/404415.jpg\",\"email\":null,\"twitter\":null,\"github\":null,\"website\":null},{\"MemberId\":407510,\"createdAt\":\"2023-03-07 22:27\",\"type\":\"USER\",\"role\":\"BACKER\",\"tier\":\"Backer 🖤\",\"isActive\":true,\"totalAmountDonated\":1,\"currency\":\"USD\",\"lastTransactionAt\":\"2023-03-07 22:27\",\"lastTransactionAmount\":1,\"profile\":\"https://opencollective.com/higherror\",\"name\":\"HighError\",\"company\":null,\"description\":null,\"image\":\"/sponsors/407510.jpg\",\"email\":null,\"twitter\":null,\"github\":\"https://github.com/HighError\",\"website\":\"https://higherror.github.io/\"},{\"MemberId\":409558,\"createdAt\":\"2023-03-12 21:41\",\"type\":\"USER\",\"role\":\"BACKER\",\"tier\":\"Backer 🖤\",\"isActive\":true,\"totalAmountDonated\":1,\"currency\":\"USD\",\"lastTransactionAt\":\"2023-03-12 21:41\",\"lastTransactionAmount\":1,\"profile\":\"https://opencollective.com/guest-6133a45c\",\"name\":\"Kristof\",\"company\":null,\"description\":null,\"image\":\"/sponsors/undefined\",\"email\":null,\"twitter\":null,\"github\":null,\"website\":null},{\"MemberId\":438158,\"createdAt\":\"2023-05-31 22:44\",\"type\":\"USER\",\"role\":\"BACKER\",\"tier\":\"Backer 🖤\",\"isActive\":true,\"totalAmountDonated\":5,\"currency\":\"USD\",\"lastTransactionAt\":\"2023-05-31 22:44\",\"lastTransactionAmount\":5,\"profile\":\"https://opencollective.com/elektrnik\",\"name\":\"ELEKTRNIK\",\"company\":null,\"description\":null,\"image\":\"/sponsors/438158.jpg\",\"email\":null,\"twitter\":null,\"github\":null,\"website\":null},{\"MemberId\":438877,\"createdAt\":\"2023-06-02 17:56\",\"type\":\"USER\",\"role\":\"BACKER\",\"tier\":\"Backer 🖤\",\"isActive\":true,\"totalAmountDonated\":1,\"currency\":\"USD\",\"lastTransactionAt\":\"2023-06-02 17:56\",\"lastTransactionAmount\":1,\"profile\":\"https://opencollective.com/guest-425370ea\",\"name\":\"Gabriel Jiménez\",\"company\":null,\"description\":null,\"image\":\"/sponsors/undefined\",\"email\":null,\"twitter\":null,\"github\":null,\"website\":null},{\"MemberId\":439182,\"createdAt\":\"2023-06-03 15:15\",\"type\":\"USER\",\"role\":\"BACKER\",\"tier\":\"Backer 🖤\",\"isActive\":true,\"totalAmountDonated\":1,\"currency\":\"USD\",\"lastTransactionAt\":\"2023-06-03 15:15\",\"lastTransactionAmount\":1,\"profile\":\"https://opencollective.com/jay-thanawut1\",\"name\":\"Jay Thanawut\",\"company\":null,\"description\":null,\"image\":\"/sponsors/439182.jpg\",\"email\":null,\"twitter\":null,\"github\":null,\"website\":null},{\"MemberId\":442878,\"createdAt\":\"2023-06-13 13:51\",\"type\":\"USER\",\"role\":\"BACKER\",\"tier\":\"Backer 🖤\",\"isActive\":true,\"totalAmountDonated\":5,\"currency\":\"USD\",\"lastTransactionAt\":\"2023-06-13 13:51\",\"lastTransactionAmount\":5,\"profile\":\"https://opencollective.com/encurme\",\"name\":\"EncurMe\",\"company\":\"EncurMe\",\"description\":null,\"image\":\"/sponsors/442878.jpg\",\"email\":null,\"twitter\":null,\"github\":null,\"website\":\"https://encur.me/\"}]}],[\"$\",\"span\",null,{\"aria-hidden\":\"true\",\"className\":\"w-px h-px block\",\"style\":{\"marginLeft\":\"0.25rem\",\"marginTop\":\"6rem\"}}],[\"$\",\"$L18\",null,{}],[\"$\",\"section\",null,{\"className\":\"relative z-10 gap-2 w-full flex flex-col items-center mt-16 lg:mt-44\",\"children\":[\"$\",\"div\",null,{\"className\":\"max-w-4xl flex flex-col gap-8\",\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"div\",null,{\"className\":\"flex flex-col gap-2 justify-center w-full items-center\",\"children\":[\"$\",\"div\",null,{\"className\":\"inline-flex items-center\",\"children\":[[\"$\",\"h1\",null,{\"className\":\"tracking-tight inline font-semibold text-4xl lg:text-6xl\",\"children\":\"Community\"}],\"  \"]}]}],[\"$\",\"p\",null,{\"className\":\"w-full my-2 text-lg lg:text-xl font-normal text-default-500 max-w-full md:w-full text-center flex justify-center items-center\",\"children\":\"Get involved in our community. Everyone is welcome!\"}],[\"$\",\"$L19\",null,{\"y\":12}],[\"$\",\"$L11\",null,{\"classNames\":{\"base\":\"lg:grid-cols-3\",\"iconWrapper\":\"bg-transparent\",\"body\":\"pt-0\"},\"features\":[{\"title\":\"Twitter\",\"description\":\"For announcements, tips and general information.\",\"icon\":[\"$\",\"svg\",null,{\"height\":32,\"viewBox\":\"0 0 24 24\",\"width\":32,\"className\":\"text-[#00ACEE]\",\"children\":[\"$\",\"path\",null,{\"d\":\"M19.633 7.997c.013.175.013.349.013.523 0 5.325-4.053 11.461-11.46 11.461-2.282 0-4.402-.661-6.186-1.809.324.037.636.05.973.05a8.07 8.07 0 0 0 5.001-1.721 4.036 4.036 0 0 1-3.767-2.793c.249.037.499.062.761.062.361 0 .724-.05 1.061-.137a4.027 4.027 0 0 1-3.23-3.953v-.05c.537.299 1.16.486 1.82.511a4.022 4.022 0 0 1-1.796-3.354c0-.748.199-1.434.548-2.032a11.457 11.457 0 0 0 8.306 4.215c-.062-.3-.1-.611-.1-.923a4.026 4.026 0 0 1 4.028-4.028c1.16 0 2.207.486 2.943 1.272a7.957 7.957 0 0 0 2.556-.973 4.02 4.02 0 0 1-1.771 2.22 8.073 8.073 0 0 0 2.319-.624 8.645 8.645 0 0 1-2.019 2.083z\",\"fill\":\"currentColor\"}]}],\"href\":\"https://twitter.com/getnextui\",\"isExternal\":true},{\"title\":\"Discord\",\"description\":\"To get involved in the community, ask questions and share tips.\",\"icon\":[\"$\",\"svg\",null,{\"height\":32,\"viewBox\":\"0 0 24 24\",\"width\":32,\"className\":\"text-[#7289DA]\",\"children\":[\"$\",\"path\",null,{\"d\":\"M14.82 4.26a10.14 10.14 0 0 0-.53 1.1 14.66 14.66 0 0 0-4.58 0 10.14 10.14 0 0 0-.53-1.1 16 16 0 0 0-4.13 1.3 17.33 17.33 0 0 0-3 11.59 16.6 16.6 0 0 0 5.07 2.59A12.89 12.89 0 0 0 8.23 18a9.65 9.65 0 0 1-1.71-.83 3.39 3.39 0 0 0 .42-.33 11.66 11.66 0 0 0 10.12 0q.21.18.42.33a10.84 10.84 0 0 1-1.71.84 12.41 12.41 0 0 0 1.08 1.78 16.44 16.44 0 0 0 5.06-2.59 17.22 17.22 0 0 0-3-11.59 16.09 16.09 0 0 0-4.09-1.35zM8.68 14.81a1.94 1.94 0 0 1-1.8-2 1.93 1.93 0 0 1 1.8-2 1.93 1.93 0 0 1 1.8 2 1.93 1.93 0 0 1-1.8 2zm6.64 0a1.94 1.94 0 0 1-1.8-2 1.93 1.93 0 0 1 1.8-2 1.92 1.92 0 0 1 1.8 2 1.92 1.92 0 0 1-1.8 2z\",\"fill\":\"currentColor\"}]}],\"href\":\"https://discord.gg/9b6yyZKmH4\",\"isExternal\":true},{\"title\":\"Github\",\"description\":\"To report bugs, request features and contribute to the project.\",\"icon\":[\"$\",\"svg\",null,{\"height\":32,\"viewBox\":\"0 0 24 24\",\"width\":32,\"className\":\"text-[#333] dark:text-[#E7E7E7]\",\"children\":[\"$\",\"path\",null,{\"clipRule\":\"evenodd\",\"d\":\"M12.026 2c-5.509 0-9.974 4.465-9.974 9.974 0 4.406 2.857 8.145 6.821 9.465.499.09.679-.217.679-.481 0-.237-.008-.865-.011-1.696-2.775.602-3.361-1.338-3.361-1.338-.452-1.152-1.107-1.459-1.107-1.459-.905-.619.069-.605.069-.605 1.002.07 1.527 1.028 1.527 1.028.89 1.524 2.336 1.084 2.902.829.091-.645.351-1.085.635-1.334-2.214-.251-4.542-1.107-4.542-4.93 0-1.087.389-1.979 1.024-2.675-.101-.253-.446-1.268.099-2.64 0 0 .837-.269 2.742 1.021a9.582 9.582 0 0 1 2.496-.336 9.554 9.554 0 0 1 2.496.336c1.906-1.291 2.742-1.021 2.742-1.021.545 1.372.203 2.387.099 2.64.64.696 1.024 1.587 1.024 2.675 0 3.833-2.33 4.675-4.552 4.922.355.308.675.916.675 1.846 0 1.334-.012 2.41-.012 2.737 0 .267.178.577.687.479C19.146 20.115 22 16.379 22 11.974 22 6.465 17.535 2 12.026 2z\",\"fill\":\"currentColor\",\"fillRule\":\"evenodd\"}]}],\"href\":\"https://github.com/nextui-org/nextui\",\"isExternal\":true}]}]]}]}]}],[\"$\",\"span\",null,{\"aria-hidden\":\"true\",\"className\":\"w-px h-px block\",\"style\":{\"marginLeft\":\"0.25rem\",\"marginTop\":\"6rem\"}}]]}]}]\n"])
+        </script>
+        <script>
+            self.__next_f.push([1, "5:[[\"$\",\"meta\",\"0\",{\"charSet\":\"utf-8\"}],[\"$\",\"title\",\"1\",{\"children\":\"NextUI - Beautiful, fast and modern React UI Library\"}],[\"$\",\"meta\",\"2\",{\"name\":\"description\",\"content\":\"Make beautiful websites regardless of your design experience.\"}],[\"$\",\"link\",\"3\",{\"rel\":\"author\",\"href\":\"https://jrgarciadev.com\"}],[\"$\",\"meta\",\"4\",{\"name\":\"author\",\"content\":\"jrgarciadev\"}],[\"$\",\"link\",\"5\",{\"rel\":\"manifest\",\"href\":\"/manifest.json\"}],[\"$\",\"meta\",\"6\",{\"name\":\"keywords\",\"content\":\"React,Next.js,Tailwind CSS,NextUI,React Aria,Server Components,React Components,UI Components,UI Kit,UI Library,UI Framework,UI Design System\"}],[\"$\",\"meta\",\"7\",{\"name\":\"theme-color\",\"media\":\"(prefers-color-scheme: light)\",\"content\":\"white\"}],[\"$\",\"meta\",\"8\",{\"name\":\"theme-color\",\"media\":\"(prefers-color-scheme: dark)\",\"content\":\"black\"}],[\"$\",\"meta\",\"9\",{\"name\":\"viewport\",\"content\":\"viewport-fit=cover, width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0\"}],[\"$\",\"meta\",\"10\",{\"name\":\"creator\",\"content\":\"jrgarciadev\"}],[\"$\",\"link\",\"11\",{\"rel\":\"canonical\",\"href\":\"https://nextui.org\"}],[\"$\",\"link\",\"12\",{\"rel\":\"alternate\",\"type\":\"application/rss+xml\",\"title\":\"NextUI RSS Feed\",\"href\":\"https://nextui.org/feed.xml\"}],[\"$\",\"meta\",\"13\",{\"property\":\"og:description\",\"content\":\"Beautiful, fast and modern React UI Library\"}],[\"$\",\"meta\",\"14\",{\"property\":\"og:url\",\"content\":\"https://nextui.org\"}],[\"$\",\"meta\",\"15\",{\"property\":\"og:site_name\",\"content\":\"NextUI\"}],[\"$\",\"meta\",\"16\",{\"property\":\"og:locale\",\"content\":\"en_US\"}],[\"$\",\"meta\",\"17\",{\"property\":\"og:image\",\"content\":\"https://nextui.org/twitter-cards/nextui.jpeg\"}],[\"$\",\"meta\",\"18\",{\"property\":\"og:image:width\",\"content\":\"1200\"}],[\"$\",\"meta\",\"19\",{\"property\":\"og:image:height\",\"content\":\"630\"}],[\"$\",\"meta\",\"20\",{\"property\":\"og:image:alt\",\"content\":\"NextUI\"}],[\"$\",\"meta\",\"21\",{\"property\":\"og:type\",\"content\":\"website\"}],[\"$\",\"meta\",\"22\",{\"name\":\"twitter:card\",\"content\":\"summary_large_image\"}],[\"$\",\"meta\",\"23\",{\"name\":\"twitter:creator\",\"content\":\"@getnextui\"}],[\"$\",\"meta\",\"24\",{\"name\":\"twitter:title\",\"content\":\"NextUI - Beautiful, fast and modern React UI Library\"}],[\"$\",\"meta\",\"25\",{\"name\":\"twitter:description\",\"content\":\"Make beautiful websites regardless of your design experience.\"}],[\"$\",\"meta\",\"26\",{\"name\":\"twitter:image\",\"content\":\"https://nextui.org/twitter-cards/nextui.jpeg\"}],[\"$\",\"meta\",\"27\",{\"name\":\"twitter:image:width\",\"content\":\"1200\"}],[\"$\",\"meta\",\"28\",{\"name\":\"twitter:image:height\",\"content\":\"630\"}],[\"$\",\"meta\",\"29\",{\"name\":\"twitter:image:alt\",\"content\":\"NextUI\"}],[\"$\",\"link\",\"30\",{\"rel\":\"shortcut icon\",\"href\":\"/favicon-32x32.png\"}],[\"$\",\"link\",\"31\",{\"rel\":\"icon\",\"href\":\"/favicon.ico\"}],[\"$\",\"link\",\"32\",{\"rel\":\"apple-touch-icon\",\"href\":\"/apple-touch-icon.png\"}],[\"$\",\"meta\",\"33\",{\"name\":\"next-size-adjust\"}]]\n"])
+        </script>
+        <script>
+            self.__next_f.push([1, "b:null\n"])
+        </script>
+    </body>
+</html>
